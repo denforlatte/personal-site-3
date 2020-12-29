@@ -67,10 +67,8 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
+    strapiAbout {
+      body
     }
   }
 `
