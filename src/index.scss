@@ -1,0 +1,24 @@
+// Global style to be imported at the layout level
+@font-face {
+  font-family: "Noto Sans Light";
+  src: url("./fonts/NotoSans-Light.ttf");
+}
+
+@font-face {
+  font-family: "Noto Sans Regular";
+  src: url("./fonts/NotoSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Noto Sans Bold";
+  src: url("./fonts/NotoSans-Bold.ttf");
+}
+
+body {
+  background-color: #CEBEAB;
+}
+
+.main-container {
+  margin: auto;
+  max-width: 1080px;
+}
