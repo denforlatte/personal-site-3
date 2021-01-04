@@ -1,0 +1,48 @@
+@import '../../variables';
+
+.overlay {
+  align-items: flex-end;
+  background-color: rgba($color: $colour-background-relief, $alpha: 0.5);
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 80;
+}
+
+.navList {
+  list-style: none;
+  width: 200px;
+  margin-right: 20px;
+  padding-bottom: 60px;
+
+  > li + li {
+    border-top: 2px solid $colour-primary;
+  }
+}
+
+.navListItem {
+  align-items: center;
+  display: flex;
+  height: 80px;
+  justify-content: flex-end;
+}
+
+.navLink {
+  font-size: 24px;
+  padding: 20px;
+  text-transform: uppercase;
+}
+
+.navLinkActive {
+  font-family: $font-primary-bold;
+}
+
+@media screen and (min-width: $breakpoint) {
+  .overlay {
+    display: none;
+  }
+}

@@ -10,6 +10,7 @@
   width: 100vw;
   justify-content: space-around;
   position: absolute;
+  z-index: 99;
 
   > button {
     background-color: transparent;
@@ -17,7 +18,9 @@
     color: $colour-font-main;
     font-family: $font-primary-bold;
     font-size: 24px;
+    cursor: pointer;
     text-transform: uppercase;
+    width: 50%;
   }
 }
 

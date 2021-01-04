@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import Img from 'gatsby-image';
@@ -6,24 +6,25 @@ import styles from "./header.module.scss";
 
 import SocialLinks from './SocialLinks';
 import MobileNav from '../MobileNav';
+import MobileMenu from '../MobileMenu';
 
 const Header = ({ location }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const data = useStaticQuery(query);
+  const links = ["Home", "Projects", "Blog", "Games", "About", "Contact", "Search"];
 
-  const generateNavLinks = () => {
-    const items = ["Home", "Projects", "Blog", "Games", "About", "Contact", "Search"];
-
-    return items.map(item => {
-      const url = item === 'Home' ? '/' : '/' + item.toLowerCase();
+  const generateNavLinks = () => (
+    links.map(link => {
+      const url = link === 'Home' ? '/' : '/' + link.toLowerCase();
       const isActive = location.pathname === url;
-      const className = isActive ? styles.navItemActive : styles.navItem;
+      const className = isActive ? styles.navLinkActive : styles.navLink;
       
       return (
-      <li key={item}>
-        <Link to={url} className={className}>{item}</Link>
+      <li key={link}>
+        <Link to={url} className={className}>{link}</Link>
       </li>
     )})
-  }
+  )
 
   return (
     <header className={styles.header}>
@@ -38,7 +39,8 @@ const Header = ({ location }) => {
       <nav className={styles.navbar}>
         {generateNavLinks()}
       </nav>
-      <MobileNav />
+      <MobileNav setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}/>
+      {isMenuOpen && <MobileMenu  links={links} location={location} isMenuOpen={isMenuOpen}/>}
     </header>
   );
 };
