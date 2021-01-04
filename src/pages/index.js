@@ -1,15 +1,17 @@
 import React from "react";
+
 import SEO from "../components/seo";
+import Header from "../components/Header";
 
 import "../index.scss";
-import testStyles from "../test.module.scss";
 
-const Index = () => {
+const Index = ({location}) => {
   return (
     <>
       <SEO title="Home" />
       <div className="main-container">
-        {/* <Header/> */}
+        <Header location={location}/>
+        <br/>
         <main style={{backgroundColor: "#F5F1EB"}}>
           <div>left</div>
           <div>right</div>

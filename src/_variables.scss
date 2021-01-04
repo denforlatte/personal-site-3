@@ -1,19 +1,12 @@
-// Experiment with random colours
-$red: random(256)-1;
-$green: random(256)-1;
-$blue: random(256)-1;
+$colour-primary: #A4988A;
+$colour-secondary: #A4988A;
+$colour-background: #CEBEAB;
+$colour-background-relief: #F5F1EB;
+$colour-font-main: #444444;
 
-// Cool colours: #b151a6 #079129
+$font-primary: 'Noto Sans Regular', Calibri, 'Trebuchet MS', sans-serif;
+$font-primary-light: 'Noto Sans Light', Calibri, 'Trebuchet MS', sans-serif;
+$font-primary-bold: 'Noto Sans Bold', Calibri, 'Trebuchet MS', sans-serif;
 
-$colour-primary: #f0f0f0;
-$colour-secondary: #69007c;
-$colour-secondary: rgb($red, $green, $blue);
-$colour-background: #777479;
-$colour-background-relief: #939393;
-$colour-font-main: #777479;
-
-$font-primary: 'Noto Sans Regular', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-$font-primary-light: 'Noto Sans Light', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-$font-primary-bold: 'Noto Sans Bold', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
-$breakpoint: 800px;
+$breakpoint: 600px;
+$max-width: 1080px;

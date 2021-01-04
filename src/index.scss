@@ -1,3 +1,5 @@
+@import './variables';
+
 // Global style to be imported at the layout level
 @font-face {
   font-family: "Noto Sans Light";
@@ -16,9 +18,20 @@
 
 body {
   background-color: #CEBEAB;
+  margin: 0;
 }
 
 .main-container {
   margin: auto;
-  max-width: 1080px;
+  max-width: $max-width;
+}
+
+h1, h2, h3, h4, h5, h6, p, a {
+  color: $colour-font-main;
+  font-family: $font-primary-light;
+  font-weight: 300;
+}
+
+a, a:hover, a:visited {
+  text-decoration: inherit;
 }
