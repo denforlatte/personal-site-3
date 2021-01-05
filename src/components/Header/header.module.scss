@@ -1,5 +1,10 @@
 @import "../../variables";
 
+.header {
+  margin: auto;
+  max-width: $max-width;
+}
+
 .banner {
   display: flex;
 }
