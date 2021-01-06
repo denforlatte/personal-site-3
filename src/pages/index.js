@@ -1,42 +1,32 @@
 import React from "react";
-import { useStaticQuery } from "gatsby";
-import Img from 'gatsby-image';
+import { navigate } from 'gatsby';
 
 import SEO from "../components/seo";
-import Header from "../components/Header";
+import LandingPage from "../templates/LandingPage";
 
 import "../index.scss";
 
-const Index = ({location}) => {
-  const data = useStaticQuery(querySketch);
-
+const Index = ({ location }) => {
   return (
     <>
       <SEO title="Home" />
-      <div>
-        <Header location={location}/>
-        <br/>
-        <main className="main-container">
-          <div className="simple-item">left</div>
-          <div className="simple-item">
-            <Img fluid={data.file.childImageSharp.fluid}/>
-          </div>
-        </main>
-      </div>
+      <LandingPage location={location}>
+        <h2>Welcome</h2>
+        <p>Hey, welcome to my site.</p>
+        <p>
+          I'm Danny, a software engineer from the UK. I make web apps and play
+          around with cloud infrastructure. Sometimes I make games in Unity.
+        </p>
+        <p>
+          Here you’ll find breakdowns of projects, a game or two, some blog
+          posts, and whatever else I feel like sharing in my corner of the
+          Internet.
+        </p>
+        <p>Check out my projects and see what I’ve been up to lately.</p>
+        <button onClick={() => navigate("/projects")}>Projects =</button>
+      </LandingPage>
     </>
   );
 };
-
-const querySketch = graphql`
-  query {
-    file(relativePath: { eq: "danny-sketch.png" }) {
-      childImageSharp {
-        fluid(quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-  }
-`;
 
 export default Index;

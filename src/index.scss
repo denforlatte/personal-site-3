@@ -18,6 +18,7 @@
 
 body {
   background-color: #CEBEAB;
+  box-sizing: border-box;
   margin: 0;
 }
 
@@ -29,20 +30,4 @@ h1, h2, h3, h4, h5, h6, p, a {
 
 a, a:hover, a:visited {
   text-decoration: inherit;
-}
-
-.main-container {
-  background-color: $colour-background-relief;
-  display: flex;
-  margin: auto;
-  max-width: $max-width;
-
-  @media screen and (max-width: $max-width) {
-    margin-right: 8px;
-    margin-left: 8px;
-  }
-}
-
-.simple-item {
-  width: 50%;
 }

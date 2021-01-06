@@ -11,7 +11,7 @@ import MobileMenu from '../MobileMenu';
 const Header = ({ location }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const data = useStaticQuery(query);
-  const links = ["Home", "Projects", "Blog", "Games", "About", "Contact", "Search"];
+  const links = ["Home", "Projects", "Blog", "Games", "About", "Search"];
 
   const generateNavLinks = () => (
     links.map(link => {

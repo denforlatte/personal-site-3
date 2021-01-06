@@ -15,6 +15,12 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        implementation: require("node-sass"),
+      },
+    },
+    {
       resolve: 'gatsby-source-strapi',
       options: {
         apiURL: process.env.STRAPI_HOST,
@@ -46,6 +52,5 @@ module.exports = {
     `gatsby-plugin-feed`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
-    `gatsby-plugin-sass`,
   ],
 }
