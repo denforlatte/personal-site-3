@@ -4,8 +4,6 @@ import { navigate } from 'gatsby';
 import SEO from "../components/seo";
 import LandingPage from "../templates/LandingPage";
 
-import "../index.scss";
-
 const Index = ({ location }) => {
   return (
     <>

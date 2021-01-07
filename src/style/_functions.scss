@@ -1,0 +1,3 @@
+@function getVWUnits($pixels, $reference) {
+  @return $pixels / $reference * 100 * 1vw;
+}
