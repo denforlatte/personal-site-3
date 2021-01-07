@@ -8,7 +8,7 @@ const MobileNav = ({ setIsMenuOpen, isMenuOpen }) => {
 
   return (
     <div className={styles.mobileNav}>
-      <button>Filter</button>
+      {false && <button>Filter</button>}
       <button onClick={handleMenuClick}>Menu</button>
     </div>
   );

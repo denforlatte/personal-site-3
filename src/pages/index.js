@@ -23,7 +23,7 @@ const Index = ({ location }) => {
           Internet.
         </p>
         <p>Check out my projects and see what I’ve been up to lately.</p>
-        <button onClick={() => navigate("/projects")}>Projects =</button>
+        <button onClick={() => navigate("/projects")}>Projects</button>
       </LandingPage>
     </>
   );
