@@ -13,6 +13,8 @@ const blog = ({ data, location }) => {
     <>
       <SEO title="Blog" />
       <Header location={location} />
+      <br/>
+      <br />
       <main>
         {data.allStrapiProject.nodes.map(node => <IndexCard item={node} key={node.slug}/>)}
       </main>
@@ -24,6 +26,7 @@ blog.propTypes = {
   location: PropTypes.object.isRequired,
 };
 
+// TODO switch to blog
 export const blogPostsQuery = graphql`
   query {
     allStrapiProject {
@@ -34,6 +37,7 @@ export const blogPostsQuery = graphql`
         title
         tags {
           name
+          slug
         }
         thumbnail {
           alternativeText

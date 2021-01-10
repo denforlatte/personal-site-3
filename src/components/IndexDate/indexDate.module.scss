@@ -1,0 +1,32 @@
+@import '../../style/variables';
+
+.date {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 20px;
+  min-width: 130px;
+
+  > div {
+    border-bottom: $colour-font-main 1px solid;
+  }
+}
+
+.day {
+  display: inline;
+  font-size: 64px;
+  line-height: 50px;
+}
+
+.month {
+  display: inline;
+  font-size: 36px;
+  line-height: 50px;
+}
+
+.year {
+  font-size: 36px;
+  line-height: 40px;
+  margin: 0;
+}

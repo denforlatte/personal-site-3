@@ -1,6 +1,62 @@
 @import '../../style/variables';
 
+.article {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
 .container {
   background-color: $colour-background-relief;
+  display: grid;
+  flex-grow: 1;
+  grid-template-columns: 400px auto;
+  height: 300px;
+  max-width: $max-width;
+}
+
+.image {
+  width: 400px;
+}
+
+.textContainer {
   display: flex;
+  flex-direction: column;
+  padding: 14px;
+
+  h2 {
+    font-size: 30px;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  p {
+    flex-grow: 1;
+    font-size: 18px;
+  }
+}
+
+.readMore {
+  font-size: 18px;
+  text-transform: uppercase;
+  text-align: end;
+}
+
+.tagContainer {
+ min-width: 150px;
+}
+
+.tag {
+  background: $colour-primary;
+  border-radius: 0px 10px 10px 0px;
+  color: $colour-font-relief;
+  display: block;
+  font-family: $font-primary-bold;
+  font-size: 18px;
+  height: 35px;
+  width: 135px;
+  line-height: 32px;
+  margin-top: 10px;
+  text-transform: uppercase;
+  text-align: center;
 }
