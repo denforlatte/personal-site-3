@@ -17,6 +17,7 @@
   display: inline;
   font-size: 64px;
   line-height: 50px;
+  margin-right: 4px;
 }
 
 .month {
@@ -29,4 +30,26 @@
   font-size: 36px;
   line-height: 40px;
   margin: 0;
+}
+
+@media screen and (min-width: $breakpoint) and (max-width: $max-width + 300px) {
+  .date {
+    padding-right: 10px;
+    min-width: 100px;
+  }
+
+  .day {
+    font-size: 40px;
+    line-height: 42px;
+  }
+  
+  .month {
+    font-size: 28px;
+    line-height: 42px;
+  }
+  
+  .year {
+    font-size: 28px;
+    line-height: 32px;
+  }
 }
