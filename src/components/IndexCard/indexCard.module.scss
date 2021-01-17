@@ -28,7 +28,6 @@
   }
 
   p {
-    flex-grow: 1;
     font-size: 18px;
     margin-bottom: 0;
   }
@@ -41,7 +40,12 @@
 }
 
 .tagContainer {
- min-width: 150px;
+  display: none;
+  min-width: 150px;
+
+  @media screen and (min-width: $breakpoint) { 
+    display: block;
+  }
 }
 
 .tag {
@@ -49,14 +53,19 @@
   border-radius: 0px 10px 10px 0px;
   color: $colour-font-relief;
   display: block;
-  font-family: $font-primary-bold;
+  font-family: $font-primary;
   font-size: 18px;
+  font-weight: 700;
   height: 35px;
   width: 135px;
   line-height: 32px;
   margin-top: 10px;
   text-transform: uppercase;
   text-align: center;
+}
+
+.tagsAndDate {
+  display: none;
 }
 
 @media screen and (min-width: $breakpoint) and (max-width: $max-width + 300px) {
@@ -90,5 +99,54 @@
     height: 30px;
     width: 100px;
     line-height: 26px;
+  }
+}
+
+@media screen and (max-width: $breakpoint) { 
+  .container {
+    display: block;
+    height: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 18px 20px;
+  }
+
+  .textContainer {
+    padding: 0;
+
+    h2 {
+      margin-bottom: 6px;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .readMore {
+    display: none;
+  }
+
+  .tagsAndDate {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .tag {
+    display: inline-block;
+    border-radius: 10px;
+    font-size: 14px;
+    height: auto;
+    width: auto;
+    line-height: 26px;
+    margin-right: 6px;
+    padding: 0 10px;
+  }
+
+  .mobileDate {
+    span {
+      font-size: 30px;
+      margin-right: 6px;
+    }
   }
 }

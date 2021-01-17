@@ -43,7 +43,7 @@ export const blogPostsQuery = graphql`
           alternativeText
           localFile {
             childImageSharp {
-              fluid(maxWidth: 400) {
+              fluid(maxWidth: 400, maxHeight: 300) {
                 ...GatsbyImageSharpFluid
               }
             }

@@ -38,7 +38,8 @@
 }
 
 .navLinkActive {
-  font-family: $font-primary-bold;
+  font-family: $font-primary;
+  font-weight: 700;
 }
 
 @media screen and (min-width: $breakpoint) {

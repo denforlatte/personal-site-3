@@ -2,17 +2,20 @@
 
 // Global style to be imported at the layout level
 @font-face {
-  font-family: "Noto Sans Light";
+  font-family: "Noto Sans";
+  font-weight: 300;
   src: url("./fonts/NotoSans-Light.ttf");
 }
 
 @font-face {
-  font-family: "Noto Sans Regular";
+  font-family: "Noto Sans";
+  font-weight: 400;
   src: url("./fonts/NotoSans-Regular.ttf");
 }
 
 @font-face {
-  font-family: "Noto Sans Bold";
+  font-family: "Noto Sans";
+  font-weight: 700;
   src: url("./fonts/NotoSans-Bold.ttf");
 }
 
@@ -24,7 +27,7 @@ body {
 
 h1, h2, h3, h4, h5, h6, p, a {
   color: $colour-font-main;
-  font-family: $font-primary-light;
+  font-family: $font-primary;
   font-weight: 300;
 }
 

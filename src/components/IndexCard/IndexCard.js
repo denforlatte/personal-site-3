@@ -9,9 +9,11 @@ import IndexDate from "../IndexDate";
 const IndexCard = ({
   item: { title, summary, thumbnail, tags, published_date, slug },
 }) => {
+  published_date = new Date(published_date);
+
   return (
     <article className={styles.article}>
-      <IndexDate date={new Date(published_date)}/>
+      <IndexDate date={published_date}/>
 
       <div className={styles.container}>
         {thumbnail ? (<Img
@@ -26,6 +28,14 @@ const IndexCard = ({
           </Link>
           <p>{summary}</p>
           <Link to={slug} className={styles.readMore}>Read more</Link>
+          <div className={styles.tagsAndDate}>
+            <div>
+              {tags.map(tag => (
+                <Link to={'/tags/' + tag.slug} className={styles.tag}>{tag.name}</Link>
+              ))}
+            </div>
+            <p className={styles.mobileDate}><span>{published_date.getDay()}</span> {published_date.toLocaleDateString("default", { month: "short" })} {published_date.getFullYear()}</p>
+          </div>
         </div>
       </div>
       

@@ -20,7 +20,7 @@
   flex-direction: column;
   flex-grow: 1;
   justify-content: space-between;
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .title {
@@ -51,7 +51,8 @@
 }
 
 .navLinkActive {
-  font-family: $font-primary-bold;
+  font-family: $font-primary;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -104,6 +105,10 @@
 }
 
 @media screen and (max-width: $breakpoint) {
+  .primaryContainer {
+    margin-left: 0;
+  }
+  
   .socialContainer {
     display: none;
   }

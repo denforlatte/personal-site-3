@@ -2,7 +2,7 @@
 
 .date {
   align-items: center;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   padding-right: 20px;
@@ -10,6 +10,10 @@
 
   > div {
     border-bottom: $colour-font-main 1px solid;
+  }
+
+  @media screen and (min-width: $breakpoint) {
+    display: flex;
   }
 }
 
