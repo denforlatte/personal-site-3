@@ -3,25 +3,14 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
 import SEO from "../components/seo";
-import Header from "../components/Header";
-import IndexCard from "../components/IndexCard";
-import MobileVegvisir from '../components/MobileVegvisir';
+import IndexPage from '../templates/IndexPage';
 
 const blog = ({ data, location }) => {
+
   return (
     <>
       <SEO title="Blog" />
-      <Header location={location} />
-      <main style={{marginBottom: '50px'}}>
-        {data.allStrapiProject.nodes.map(node => (
-          <>
-            <MobileVegvisir />
-            <IndexCard item={node} key={node.slug}/>
-          </>
-        ))}
-      </main>
-      <br/>
-      <br/>
+      <IndexPage location={location} nodes={data.allStrapiProject.nodes} />
     </>
   );
 };
