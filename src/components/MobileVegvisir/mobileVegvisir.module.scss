@@ -1,0 +1,11 @@
+@import '../../style/variables';
+
+.mobileVegvisir {
+  margin: auto;
+  margin-top: 16px;
+  width: 80px;
+
+  @media screen and (min-width: $breakpoint) {
+    display: none;
+  }
+}

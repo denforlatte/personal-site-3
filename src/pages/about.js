@@ -8,8 +8,6 @@ import LandingPage from "../templates/LandingPage";
 import {richTextToPTags} from '../utilities';
 
 const about = ({ data, location }) => {
-  console.log('data.strapiAbout.body :>> ', data.strapiAbout.body);
-
   return (
     <>
       <SEO title="About" />

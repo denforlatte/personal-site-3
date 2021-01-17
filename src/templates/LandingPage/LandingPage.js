@@ -4,16 +4,17 @@ import { graphql, useStaticQuery } from "gatsby";
 import Img from 'gatsby-image';
 
 import Header from "../../components/Header";
+import MobileVegvisir from '../../components/MobileVegvisir';
 
 import styles from './landingPage.module.scss';
 
-const LandingPage = ({location, children}) => {
+const LandingPage = ({location, children, noVegvisir}) => {
   const data = useStaticQuery(querySketch);
 
   return (
     <>
       <Header location={location}/>
-      <br/>
+      {!noVegvisir && <MobileVegvisir />}
       <main className={styles.mainContainer}>
         <div className={styles.content}>
           {children}
@@ -28,6 +29,8 @@ const LandingPage = ({location, children}) => {
 
 LandingPage.propTypes = {
   location: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
+  noVegvisir: PropTypes.bool,
 }
 
 const querySketch = graphql`

@@ -5,19 +5,23 @@ import { graphql } from "gatsby";
 import SEO from "../components/seo";
 import Header from "../components/Header";
 import IndexCard from "../components/IndexCard";
+import MobileVegvisir from '../components/MobileVegvisir';
 
 const blog = ({ data, location }) => {
-  console.log("data :>> ", data);
-
   return (
     <>
       <SEO title="Blog" />
       <Header location={location} />
-      <br/>
-      <br />
-      <main>
-        {data.allStrapiProject.nodes.map(node => <IndexCard item={node} key={node.slug}/>)}
+      <main style={{marginBottom: '50px'}}>
+        {data.allStrapiProject.nodes.map(node => (
+          <>
+            <MobileVegvisir />
+            <IndexCard item={node} key={node.slug}/>
+          </>
+        ))}
       </main>
+      <br/>
+      <br/>
     </>
   );
 };
