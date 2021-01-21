@@ -6,18 +6,71 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+// exports.onCreateNode = ({ node, actions, getNode }) => {
+//   const { createNodeField } = actions
+// }
 
-  // if (node.internal.type === `MarkdownRemark`) {
-  //   const value = createFilePath({ node, getNode })
+exports.sourceNodes = ({ actions, getNodesByType, createNodeId, createContentDigest }) => {
+  const { createNode } = actions
 
-  //   createNodeField({
-  //     name: `slug`,
-  //     node,
-  //     value,
-  //   })
-  // }
+  const projects = getNodesByType("StrapiProject");
+  const blogPosts = getNodesByType("StrapiBlogPost");
+  const orderedTags = [];
+
+  // Populate array of tags, counting how many times they are used
+  projects.forEach(project => {
+    if (project.tags) {
+      project.tags.forEach(tag => {
+        const tagIndex = orderedTags.findIndex(t => t.name === tag.name);
+
+        if (tagIndex > 0) {
+          orderedTags[tagIndex].projectCount++;
+        } else {
+          const tagClone = {...tag};
+          tagClone.projectCount = 1
+          tagClone.blogPostCount = 0;
+          orderedTags.push(tagClone);
+        }
+      })
+    }
+  })
+
+  blogPosts.forEach(blogPost => {
+    if (blogPost.tags) {
+      blogPost.tags.forEach(tag => {
+        const tagIndex = orderedTags.findIndex(t => t.name === tag.name);
+
+        if (tagIndex > 0) {
+          orderedTags[tagIndex].blogPostCount++;
+        } else {
+          const tagClone = {...tag};
+          tagClone.projectCount = 0
+          tagClone.blogPostCount = 1;
+          orderedTags.push(tagClone);
+        }
+      })
+    }
+  })
+
+  // Create the GraphQL nodes for the tags
+  orderedTags.forEach(tag => {
+    const nodeContent = JSON.stringify(tag)
+
+    const nodeMeta = {
+      id: createNodeId(`strapi-tag-${tag.id}`),
+      parent: null,
+      children: [],
+      internal: {
+        type: `StrapiTag`,
+        mediaType: `text/html`,
+        content: nodeContent,
+        contentDigest: createContentDigest(tag)
+      }
+    }
+
+    const node = Object.assign({}, tag, nodeMeta)
+    createNode(node)
+  })
 }
 
 exports.createSchemaCustomization = ({ actions }) => {

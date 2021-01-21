@@ -3,39 +3,52 @@ import PropTypes from "prop-types";
 
 import Header from "../../components/Header";
 import IndexCard from "../../components/IndexCard";
-import MobileVegvisir from '../../components/MobileVegvisir';
 import DesktopIndexFilter from "../../components/DesktopIndexFilter";
 
-// TODO harvest tags list from posts
 // TODO make separate array of active tags.
 // TODO filter posts
 const IndexPage = ({ location, nodes }) => {
-  const [tags, setTags] = useState(nodes[0].tags);
+  const [tags, setTags] = useState([]);
 
-  const handleToggleTag = (name) => {
+  // Harvest tags in order of use
+  // TODO refactor this to the build step and query it
+  useEffect(() => {
+    let orderedTags = [];
+
+    nodes.forEach(node => {
+      node.tags.forEach(tag => {
+        const tagIndex = orderedTags.findIndex(t => t.name === tag.name);
+
+        if (tagIndex > 0) {
+          orderedTags[tagIndex].count++
+        } else {
+          const tagClone = {...tag};
+          tagClone.count = 1
+          orderedTags.push(tagClone)
+        }
+      })
+    })
+
+    orderedTags = orderedTags.sort((a, b) => b.count - a.count);
+    setTags(orderedTags);
+  }, [nodes])
+
+  const handleToggleTag = name => {
     const tagIndex = tags.findIndex(tag => tag.name === name);
 
     let tagsCopy = [...tags];
     tagsCopy[tagIndex].isActive = !tags[tagIndex].isActive;
 
-    console.log('prev Tags :>> ', tags);
-    console.log('toggle fired :>> ', tagsCopy);
-
     setTags(tagsCopy);
-  }
-
-  console.log('tagooos :>> ', tags);
+  };
 
   return (
     <>
       <Header location={location} />
       <DesktopIndexFilter tags={tags} toggleTag={handleToggleTag} />
-      <main style={{marginBottom: '50px'}}>
+      <main style={{ marginBottom: "50px" }}>
         {nodes.map(node => (
-          <>
-            <MobileVegvisir />
-            <IndexCard item={node} key={node.slug}/>
-          </>
+          <IndexCard item={node} key={node.slug} />
         ))}
       </main>
     </>
