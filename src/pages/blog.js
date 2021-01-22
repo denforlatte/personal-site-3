@@ -22,7 +22,7 @@ blog.propTypes = {
 // TODO switch to blog
 export const blogPostsQuery = graphql`
   query {
-    allStrapiProject {
+    allStrapiProject(sort: { fields: published_date, order: ASC }) {
       nodes {
         published_date
         slug

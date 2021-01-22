@@ -1,37 +1,15 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { useStaticQuery } from 'gatsby';
 
 import Header from "../../components/Header";
 import IndexCard from "../../components/IndexCard";
 import DesktopIndexFilter from "../../components/DesktopIndexFilter";
 
-// TODO make separate array of active tags.
 // TODO filter posts
 const IndexPage = ({ location, nodes }) => {
-  const [tags, setTags] = useState([]);
-
-  // Harvest tags in order of use
-  // TODO refactor this to the build step and query it
-  useEffect(() => {
-    let orderedTags = [];
-
-    nodes.forEach(node => {
-      node.tags.forEach(tag => {
-        const tagIndex = orderedTags.findIndex(t => t.name === tag.name);
-
-        if (tagIndex > 0) {
-          orderedTags[tagIndex].count++
-        } else {
-          const tagClone = {...tag};
-          tagClone.count = 1
-          orderedTags.push(tagClone)
-        }
-      })
-    })
-
-    orderedTags = orderedTags.sort((a, b) => b.count - a.count);
-    setTags(orderedTags);
-  }, [nodes])
+  const data = useStaticQuery(query);
+  const [tags, setTags] = useState(data.allStrapiTag.nodes);
 
   const handleToggleTag = name => {
     const tagIndex = tags.findIndex(tag => tag.name === name);
@@ -59,5 +37,19 @@ IndexPage.propTypes = {
   location: PropTypes.object.isRequired,
   nodes: PropTypes.array.isRequired,
 };
+
+const query = graphql`
+  query {
+    allStrapiTag {
+      nodes {
+        name
+        slug
+        id
+        projectCount
+        blogPostCount
+      }
+    }
+  }
+`;
 
 export default IndexPage;
