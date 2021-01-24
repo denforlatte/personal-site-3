@@ -1,14 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "gatsby";
+import { Link, useStaticQuery } from "gatsby";
 import Img from "gatsby-image";
 
 import styles from "./indexCard.module.scss";
 import IndexDate from "../IndexDate";
-import MobileVegvisir from '../../components/MobileVegvisir';
+import MobileVegvisir from "../../components/MobileVegvisir";
 
 const IndexCard = ({
   item: { title, summary, thumbnail, tags, published_date, slug },
+  defaultImage,
 }) => {
   published_date = new Date(published_date);
 
@@ -26,7 +27,11 @@ const IndexCard = ({
               className={styles.image}
             />
           ) : (
-            <div className={styles.image}>IMAAAAGE</div>
+            <Img
+              fluid={defaultImage.childImageSharp.fluid}
+              alt={"Probably unrelated Celtic doodle default image"}
+              className={styles.image}
+            />
           )}
 
           <div className={styles.textContainer}>

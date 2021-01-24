@@ -5,23 +5,23 @@ import { graphql } from "gatsby";
 import SEO from "../components/seo";
 import IndexPage from '../templates/IndexPage';
 
-const blog = ({ data, location }) => {
+const projects = ({ data, location }) => {
 
   return (
     <>
-      <SEO title="Blog" />
-      <IndexPage location={location} nodes={data.allStrapiBlogPost.nodes} />
+      <SEO title="Projects" />
+      <IndexPage location={location} nodes={data.allStrapiProject.nodes} />
     </>
   );
 };
 
-blog.propTypes = {
+projects.propTypes = {
   location: PropTypes.object.isRequired,
 };
 
-export const blogPostsQuery = graphql`
+export const projectsQuery = graphql`
   query {
-    allStrapiBlogPost(sort: { fields: published_date, order: ASC }) {
+    allStrapiProject(sort: { fields: published_date, order: ASC }) {
       nodes {
         published_date
         slug
@@ -46,4 +46,4 @@ export const blogPostsQuery = graphql`
   }
 `;
 
-export default blog;
+export default projects;
