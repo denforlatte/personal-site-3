@@ -3,22 +3,19 @@ import PropTypes from "prop-types";
 
 import styles from "./mobileNav.module.scss";
 
-const MobileNav = ({ setIsMenuOpen, isMenuOpen, tags, toggleTag }) => {
-  const handleMenuClick = () => setIsMenuOpen(!isMenuOpen)
-
+const MobileNav = ({ toggleMenuOpen, toggleFilterOpen, showFilter }) => {
   return (
     <div className={styles.mobileNav}>
-      {tags && <button>Filter</button>}
-      <button onClick={handleMenuClick}>Menu</button>
+      {showFilter && <button onClick={toggleFilterOpen}>Filter</button>}
+      <button onClick={toggleMenuOpen}>Menu</button>
     </div>
   );
 };
 
 MobileNav.propTypes = {
-  setIsMenuOpen: PropTypes.func.isRequired,
-  isMenuOpen: PropTypes.bool.isRequired,
-  tags: PropTypes.array,
-  toggleTag: PropTypes.func,
+  toggleMenuOpen: PropTypes.func.isRequired,
+  toggleFilterOpen: PropTypes.func.isRequired,
+  showFilter: PropTypes.bool,
 }
 
 export default MobileNav;

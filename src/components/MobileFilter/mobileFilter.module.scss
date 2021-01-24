@@ -1,33 +1,46 @@
 @import '../../style/variables';
 
+.overlay {
+  align-items: flex-end;
+  background-color: rgba($color: $colour-background-relief, $alpha: 0.7);
+  display: flex;
+  justify-content: flex-start;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 80;
+
+  @media screen and (min-width: $breakpoint) {
+      display: none;
+  }
+}
+
 .tagContainer {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   list-style-type: none;
-  margin: 10px auto;
+  margin: 100px 0 60px 10px;
   max-width: $max-width;
   padding: 0;
-
-  @media screen and (max-width: $max-width) {
-    margin-right: 8px;
-    margin-left: 8px;
-  }
 }
 
 .tag {
   background: $colour-primary;
   display: inline-block;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   color: $colour-font-relief;
   display: block;
   font-family: $font-primary;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 24px;
+  line-height: 30px;
   margin-right: 10px;
-  margin-bottom: 10px;
-  padding: 0 10px;
+  margin-bottom: 20px;
+  padding: 2px 20px;
   text-transform: uppercase;
   text-align: center;
 }
@@ -36,16 +49,16 @@
   background: $colour-background-relief;
   display: inline-block;
   border: none;
-  border-radius: 10px;
-  color: $colour-font-main  ;
+  border-radius: 12px;
+  color: $colour-font-main;
   display: block;
   font-family: $font-primary;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 24px;
+  line-height: 30px;
   margin-right: 10px;
-  margin-bottom: 10px;
-  padding: 0 10px;
+  margin-bottom: 20px;
+  padding: 2px 20px;
   text-transform: uppercase;
   text-align: center;
 }

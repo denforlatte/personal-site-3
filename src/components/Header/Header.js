@@ -7,9 +7,11 @@ import styles from "./header.module.scss";
 import SocialLinks from "./SocialLinks";
 import MobileNav from "../MobileNav";
 import MobileMenu from "../MobileMenu";
+import MobileFilter from '../MobileFilter'
 
 const Header = ({ location, tags, toggleTag }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const data = useStaticQuery(query);
   const links = ["Home", "Projects", "Blog", "Games", "About", "Search"];
 
@@ -28,6 +30,9 @@ const Header = ({ location, tags, toggleTag }) => {
       );
     });
 
+  const toggleMenuOpen = () => setIsMenuOpen(!isMenuOpen);
+  const toggleFilterOpen = () => setIsFilterOpen(!isFilterOpen);
+
   return (
     <header className={styles.header}>
       <div className={styles.banner}>
@@ -42,14 +47,12 @@ const Header = ({ location, tags, toggleTag }) => {
       </div>
       <nav className={styles.navbar}>{generateNavLinks()}</nav>
       <MobileNav
-        setIsMenuOpen={setIsMenuOpen}
-        isMenuOpen={isMenuOpen}
-        tags={tags}
-        toggleTag={toggleTag}
+        toggleMenuOpen={toggleMenuOpen}
+        toggleFilterOpen={toggleFilterOpen}
+        showFilter={tags !== undefined}
       />
-      {isMenuOpen && (
-        <MobileMenu links={links} location={location} isMenuOpen={isMenuOpen} />
-      )}
+      {isMenuOpen && <MobileMenu links={links} location={location} />}
+      {isFilterOpen && <MobileFilter tags={tags} toggleTag={toggleTag} />}
     </header>
   );
 };

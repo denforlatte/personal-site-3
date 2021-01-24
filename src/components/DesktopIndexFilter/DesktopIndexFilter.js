@@ -1,21 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import styles from './desktopIndexFilter.module.scss';
+import styles from "./desktopIndexFilter.module.scss";
 
-const DesktopIndexFilter = ({ tags, toggleTag }) => {  
+const DesktopIndexFilter = ({ tags, toggleTag }) => {
   return (
-    <div className={styles.tagContainer}>
+    <ul className={styles.tagContainer}>
       {tags.map(tag => (
-        <button
-          key={tag.name}
-          onClick={() => toggleTag(tag.name)}
-          className={tag.isActive ? styles.tagActive : styles.tag}
-        >
-          {tag.name}
-        </button>
+        <li key={tag.name}>
+          <button
+            onClick={() => toggleTag(tag.name)}
+            className={tag.isActive ? styles.tagActive : styles.tag}
+          >
+            {tag.name}
+          </button>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 
