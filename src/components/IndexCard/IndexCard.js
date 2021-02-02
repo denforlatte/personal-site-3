@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link, useStaticQuery } from "gatsby";
+import { Link } from "gatsby";
 import Img from "gatsby-image";
 
 import styles from "./indexCard.module.scss";

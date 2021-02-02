@@ -7,7 +7,7 @@ import styles from "./header.module.scss";
 import SocialLinks from "./SocialLinks";
 import MobileNav from "../MobileNav";
 import MobileMenu from "../MobileMenu";
-import MobileFilter from '../MobileFilter'
+import MobileFilter from "../MobileFilter";
 
 const Header = ({ location, tags, toggleTag }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,10 +15,11 @@ const Header = ({ location, tags, toggleTag }) => {
   const data = useStaticQuery(query);
   const links = ["Home", "Projects", "Blog", "Games", "About", "Search"];
 
-  const generateNavLinks = () =>
-    links.map(link => {
+  const generateNavLinks = () => {
+    const currentLocation = "/" + location.pathname.split("/")[1];
+    return links.map(link => {
       const url = link === "Home" ? "/" : "/" + link.toLowerCase();
-      const isActive = location.pathname === url;
+      const isActive = url === currentLocation;
       const className = isActive ? styles.navLinkActive : styles.navLink;
 
       return (
@@ -29,6 +30,7 @@ const Header = ({ location, tags, toggleTag }) => {
         </li>
       );
     });
+  };
 
   const toggleMenuOpen = () => setIsMenuOpen(!isMenuOpen);
   const toggleFilterOpen = () => setIsFilterOpen(!isFilterOpen);

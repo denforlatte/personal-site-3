@@ -1,0 +1,26 @@
+@import '../../style/variables';
+
+.mainContainer {
+  background-color: $colour-background-relief;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 80px;
+  max-width: $max-width;
+  padding: 10px;
+
+  @media screen and (max-width: $max-width) {
+    margin-right: 8px;
+    margin-left: 8px;
+  }
+  
+  @media screen and (min-width: $breakpoint) {
+    margin-bottom: 20px;
+  }
+}
+
+.title {
+  font-size: 24px;
+  margin: 0;
+}
