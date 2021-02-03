@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql, Link } from "gatsby";
 import styles from "./postPage.module.scss";
+import { parseComponent } from '../../utilities';
 
 import Header from "../../components/Header";
 import MobileVegvisir from "../../components/MobileVegvisir";
@@ -22,7 +23,7 @@ const PostPage = ({ data, location, pageContext }) => {
         <article>
           <h1 className={styles.title}>{post.title}</h1>
           <p>Published: {readablePublishDate}{hasBeenUpdated && (' | updated: ' + readableUpdatedDate)}</p>
-          {post.body.map(item => )}
+          {post.body.map(item => parseComponent(item))}
           {/* <Link to={'/TODO check if project or blog/' + previous.slug}>Prev: {previous.title}</Link> */}
         </article>
         <div>sidebar</div>
