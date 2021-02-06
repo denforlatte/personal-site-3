@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql, Link } from "gatsby";
 import styles from "./postPage.module.scss";
-import { parseComponent } from '../../utilities';
+import { parseComponent } from "../../utilities";
 
 import Header from "../../components/Header";
 import MobileVegvisir from "../../components/MobileVegvisir";
@@ -11,9 +11,14 @@ const PostPage = ({ data, location, pageContext }) => {
   const post = data.strapiBlogPost ?? data.strapiProject;
   const { previous, next } = pageContext;
 
-  const hasBeenUpdated = new Date(post.updatedAt) > new Date(post.published_date);
-  const readablePublishDate = new Date(post.published_date).toLocaleString("en-GB", { dateStyle: "long"});
-  const readableUpdatedDate = new Date(post.updatedAt).toLocaleString("en-GB", { dateStyle: "long"});
+  const hasBeenUpdated =
+    new Date(post.updatedAt) > new Date(post.published_date);
+  const readablePublishDate = new Date(
+    post.published_date
+  ).toLocaleString("en-GB", { dateStyle: "long" });
+  const readableUpdatedDate = new Date(post.updatedAt).toLocaleString("en-GB", {
+    dateStyle: "long",
+  });
 
   return (
     <>
@@ -22,9 +27,37 @@ const PostPage = ({ data, location, pageContext }) => {
       <main className={styles.mainContainer}>
         <article>
           <h1 className={styles.title}>{post.title}</h1>
-          <p>Published: {readablePublishDate}{hasBeenUpdated && (' | updated: ' + readableUpdatedDate)}</p>
+          <p>
+            Published: {readablePublishDate}
+            {hasBeenUpdated && " | updated: " + readableUpdatedDate}
+          </p>
           {post.body.map(item => parseComponent(item))}
           {/* <Link to={'/TODO check if project or blog/' + previous.slug}>Prev: {previous.title}</Link> */}
+          <div className={styles.adjacentPosts}>
+            {previous && <div>
+              <img
+                aria-hidden="true"
+                title="previous post"
+                alt=""
+                src="/images/arrow.png"
+                className={styles.rotateimg180}
+              />
+              <Link to={"/TODO check if project or blog/" + previous.slug}>
+                Previous: {previous.title}
+              </Link>
+            </div>}
+            {next && <div>
+              <Link to={"/TODO check if project or blog/" + next.slug}>
+                Next: {next.title}
+              </Link>
+              <img
+                aria-hidden="true"
+                title="previous post"
+                alt=""
+                src="/images/arrow.png"
+              />
+            </div>}
+          </div>
         </article>
         <div>sidebar</div>
       </main>

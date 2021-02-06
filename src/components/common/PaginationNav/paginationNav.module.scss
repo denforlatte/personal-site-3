@@ -1,0 +1,43 @@
+@import '../../../style/variables';
+
+.nav {
+  border-top: 2px solid $colour-primary;
+  border-bottom: 2px solid $colour-primary;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.pageNumbers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  letter-spacing: -2px;
+  list-style-type: none;
+  margin: 0 6px;
+  padding: 0;
+
+  li + li {
+    margin-left: 6px;
+  }
+}
+
+.button {
+  background: none;
+  border: none;
+  color: $colour-font-main;
+  cursor: pointer;
+  font-family: $font-primary;
+  font-size: 20px;
+  font-weight: 300;
+  padding: 0;
+}
+
+.activeNumber {
+  font-weight: 700;
+  cursor: default;
+}
+
+.hidden {
+  visibility: hidden;
+}

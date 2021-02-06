@@ -24,3 +24,30 @@
   font-size: 24px;
   margin: 0;
 }
+
+.rotateimg180 {
+  -webkit-transform:rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.adjacentPosts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  > div {
+    column-gap: 5px;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  > div > img {
+    height: 16px;
+    width: 25px;
+  }
+}

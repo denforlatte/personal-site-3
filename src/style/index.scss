@@ -41,3 +41,19 @@ button:focus {
   border: none;
   outline: none;
 }
+
+.prose-section {
+  margin-bottom: 40px;
+
+  > p {
+    margin-top: 4px;
+    margin-right: 0;
+    margin-bottom: 4px;
+    margin-left: 0;
+    text-indent: 40px;
+  }
+
+  :first-child {
+    text-indent: 0px; 
+  }
+}
