@@ -32,31 +32,32 @@ const PostPage = ({ data, location, pageContext }) => {
             {hasBeenUpdated && " | updated: " + readableUpdatedDate}
           </p>
           {post.body.map(item => parseComponent(item))}
-          {/* <Link to={'/TODO check if project or blog/' + previous.slug}>Prev: {previous.title}</Link> */}
           <div className={styles.adjacentPosts}>
-            {previous && <div>
-              <img
-                aria-hidden="true"
-                title="previous post"
-                alt=""
-                src="/images/arrow.png"
-                className={styles.rotateimg180}
-              />
-              <Link to={"/TODO check if project or blog/" + previous.slug}>
-                Previous: {previous.title}
-              </Link>
-            </div>}
-            {next && <div>
-              <Link to={"/TODO check if project or blog/" + next.slug}>
-                Next: {next.title}
-              </Link>
-              <img
-                aria-hidden="true"
-                title="previous post"
-                alt=""
-                src="/images/arrow.png"
-              />
-            </div>}
+            {previous && (
+                <Link
+                  to={`/${location.pathname.split("/")[1]}/` + previous.slug}
+                >
+                  <img
+                    aria-hidden="true"
+                    title="previous post"
+                    alt=""
+                    src="/images/arrow.png"
+                    className={styles.rotateimg180}
+                  />
+                  <p>Previous: {previous.title}</p>
+                </Link>
+            )}
+            {next && (
+                <Link to={`/${location.pathname.split("/")[1]}/` + next.slug}>
+                  <p>Next: {next.title}</p>
+                  <img
+                    aria-hidden="true"
+                    title="previous post"
+                    alt=""
+                    src="/images/arrow.png"
+                  />
+                </Link>
+            )}
           </div>
         </article>
         <div>sidebar</div>
