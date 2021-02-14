@@ -6,6 +6,9 @@ import { parseComponent } from "../../utilities";
 
 import Header from "../../components/Header";
 import MobileVegvisir from "../../components/MobileVegvisir";
+import SEO from "../../components/seo";
+import ShareWidget from '../../components/common/ShareWidget';
+import AboutWidget from "../../components/common/AboutWidget";
 
 const PostPage = ({ data, location, pageContext }) => {
   const post = data.strapiBlogPost ?? data.strapiProject;
@@ -22,10 +25,11 @@ const PostPage = ({ data, location, pageContext }) => {
 
   return (
     <>
+      <SEO title={post.title} />
       <Header location={location} />
       <MobileVegvisir />
       <main className={styles.mainContainer}>
-        <article>
+        <article className={styles.article}>
           <h1 className={styles.title}>{post.title}</h1>
           <p>
             Published: {readablePublishDate}
@@ -60,7 +64,10 @@ const PostPage = ({ data, location, pageContext }) => {
             )}
           </div>
         </article>
-        <div>sidebar</div>
+        <div className={styles.sidebar}>
+          <ShareWidget pageUrl={location.href} pageTitle={post.title}/>
+          <AboutWidget />
+        </div>
       </main>
     </>
   );

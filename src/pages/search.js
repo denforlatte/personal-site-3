@@ -3,17 +3,17 @@ import React from "react";
 import SEO from "../components/seo";
 import Header from "../components/Header";
 
-const NotFoundPage = ({ location }) => {
+const SearchPage = ({ location }) => {
   return (
     <>
-      <SEO title="404: Not Found" />
+      <SEO title="Search" />
       <Header location={location} />
       <main style={{ maxWidth: "1080px", padding: "8px", margin: "auto" }}>
-        <h1>{"404 :("}</h1>
-        <p>This page does not exist.</p>
+        <h1>Coming soon!</h1>
+        <p>Sooner than Half Life 3, at least.</p>
       </main>
     </>
   );
 };
 
-export default NotFoundPage;
+export default SearchPage;
