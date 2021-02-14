@@ -69,6 +69,10 @@ const PostPage = ({ data, location, pageContext }) => {
           <ShareWidget pageUrl={location.href} pageTitle={post.title}/>
           <AboutWidget />
           <NewsWidget />
+          {/* TODO SEARCH */}
+          {/* TODO SUBSCRIBE */}
+          {/* TODO FEATURED PAGE */}
+          <p>&copy; Danny Thorbjørn Wilkins</p>
         </div>
       </main>
     </>
