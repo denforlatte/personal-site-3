@@ -9,6 +9,7 @@ import MobileVegvisir from "../../components/MobileVegvisir";
 import SEO from "../../components/seo";
 import ShareWidget from '../../components/common/ShareWidget';
 import AboutWidget from "../../components/common/AboutWidget";
+import NewsWidget from "../../components/common/NewsWidget";
 
 const PostPage = ({ data, location, pageContext }) => {
   const post = data.strapiBlogPost ?? data.strapiProject;
@@ -67,6 +68,7 @@ const PostPage = ({ data, location, pageContext }) => {
         <div className={styles.sidebar}>
           <ShareWidget pageUrl={location.href} pageTitle={post.title}/>
           <AboutWidget />
+          <NewsWidget />
         </div>
       </main>
     </>

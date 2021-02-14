@@ -92,4 +92,8 @@
     padding-top: 0;
     padding-left: 10px;
   }
+
+  @media screen and (min-width: $max-width) {
+    width: 380px;
+  }
 }
