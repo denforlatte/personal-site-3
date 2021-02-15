@@ -1,0 +1,25 @@
+@import '../../../style/variables';
+
+.searchWidget {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  margin-top: 16px;
+}
+
+.button {
+  background: $colour-primary;
+  border: none;
+  border-radius: 4px;
+  color: $colour-font-relief;
+  cursor: pointer;
+  font-family: $font-primary;  
+  font-size: 16px;
+  font-weight: 700;
+  height: 22px;
+  margin-top: 6px;
+  text-transform: uppercase;
+  width: 80px;
+}

@@ -10,6 +10,7 @@ import SEO from "../../components/seo";
 import ShareWidget from '../../components/common/ShareWidget';
 import AboutWidget from "../../components/common/AboutWidget";
 import NewsWidget from "../../components/common/NewsWidget";
+import SearchWidget from "../../components/common/SearchWidget";
 
 const PostPage = ({ data, location, pageContext }) => {
   const post = data.strapiBlogPost ?? data.strapiProject;
@@ -69,7 +70,7 @@ const PostPage = ({ data, location, pageContext }) => {
           <ShareWidget pageUrl={location.href} pageTitle={post.title}/>
           <AboutWidget />
           <NewsWidget />
-          {/* TODO SEARCH */}
+          <SearchWidget />
           {/* TODO SUBSCRIBE */}
           {/* TODO FEATURED PAGE */}
           <p>&copy; Danny Thorbjørn Wilkins</p>

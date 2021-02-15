@@ -11,7 +11,7 @@ const AboutWidget = props => {
           Software engineer from the UK. Creative nerd determined to learn and
           explore life.
         </p>
-        <img src="/images/meee.png" />
+        <img src="/images/meee.png" alt="Author"/>
       </div>
     </div>
   );
