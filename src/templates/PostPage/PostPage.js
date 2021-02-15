@@ -11,6 +11,7 @@ import ShareWidget from '../../components/common/ShareWidget';
 import AboutWidget from "../../components/common/AboutWidget";
 import NewsWidget from "../../components/common/NewsWidget";
 import SearchWidget from "../../components/common/SearchWidget";
+import FeaturedPageWidget from "../../components/common/FeaturedPageWidget";
 
 const PostPage = ({ data, location, pageContext }) => {
   const post = data.strapiBlogPost ?? data.strapiProject;
@@ -72,7 +73,7 @@ const PostPage = ({ data, location, pageContext }) => {
           <NewsWidget />
           <SearchWidget />
           {/* TODO SUBSCRIBE */}
-          {/* TODO FEATURED PAGE */}
+          <FeaturedPageWidget />
           <p>&copy; Danny Thorbjørn Wilkins</p>
         </div>
       </main>

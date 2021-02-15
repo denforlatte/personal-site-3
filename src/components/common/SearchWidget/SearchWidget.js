@@ -27,9 +27,9 @@ const SearchWidget = () => {
         onChange={e => setQuery(e.target.value)}
         onKeyPress={handleKeypress}
       />
-      {/* <button className={styles.button} type="button" onClick={() => handleSubmit()}>
+      <button className={styles.button} type="button" onClick={() => handleSubmit()}>
         Search
-      </button> */}
+      </button>
     </div>
   );
 };
