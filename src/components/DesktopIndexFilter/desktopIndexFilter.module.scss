@@ -16,10 +16,10 @@
 
 .tag {
   background: $colour-primary;
-  display: inline-block;
   border: none;
   border-radius: 10px;
   color: $colour-font-relief;
+  cursor: pointer;
   display: block;
   font-family: $font-primary;
   font-size: 14px;
@@ -34,10 +34,10 @@
 
 .tagActive {
   background: $colour-background-relief;
-  display: inline-block;
   border: none;
   border-radius: 10px;
-  color: $colour-font-main  ;
+  color: $colour-font-main;
+  cursor: pointer;
   display: block;
   font-family: $font-primary;
   font-size: 14px;
