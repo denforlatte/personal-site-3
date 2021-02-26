@@ -1,0 +1,55 @@
+@import '../../../style/variables';
+
+.tagContainer {
+  display: none;
+  min-width: 150px;
+
+  @media screen and (min-width: $breakpoint) { 
+    display: block;
+  }
+}
+
+.tag {
+  background: $colour-primary;
+  border-radius: 0px 10px 10px 0px;
+  color: $colour-font-relief;
+  display: block;
+  font-family: $font-primary;
+  font-size: 18px;
+  font-weight: 700;
+  height: 35px;
+  width: 135px;
+  line-height: 32px;
+  margin-top: 10px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+
+@media screen and (min-width: $breakpoint) and (max-width: $max-width + 300px) {
+
+  .tagContainer {
+    min-width: 110px;
+  }
+
+  .tag {
+    font-size: 14px;
+    height: 30px;
+    width: 100px;
+    line-height: 28px;
+  }
+}
+
+@media screen and (max-width: $breakpoint) { 
+
+  .tag {
+    display: inline-block;
+    border-radius: 10px;
+    font-size: 14px;
+    height: auto;
+    width: auto;
+    line-height: 26px;
+    margin-right: 6px;
+    padding: 0 10px;
+  }
+}

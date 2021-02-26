@@ -7,7 +7,9 @@ import { parseComponent } from "../../utilities";
 import Header from "../../components/Header";
 import MobileVegvisir from "../../components/MobileVegvisir";
 import SEO from "../../components/seo";
-import ShareWidget from '../../components/common/ShareWidget';
+import IndexDate from "../../components/IndexDate";
+import Tags from "../../components/common/Tags";
+import ShareWidget from "../../components/common/ShareWidget";
 import AboutWidget from "../../components/common/AboutWidget";
 import NewsWidget from "../../components/common/NewsWidget";
 import SearchWidget from "../../components/common/SearchWidget";
@@ -31,16 +33,21 @@ const PostPage = ({ data, location, pageContext }) => {
       <SEO title={post.title} />
       <Header location={location} />
       <MobileVegvisir />
-      <main className={styles.mainContainer}>
-        <article className={styles.article}>
-          <h1 className={styles.title}>{post.title}</h1>
-          <p>
-            Published: {readablePublishDate}
-            {hasBeenUpdated && " | updated: " + readableUpdatedDate}
-          </p>
-          {post.body.map(item => parseComponent(item))}
-          <div className={styles.adjacentPosts}>
-            {previous && (
+      <main className={styles.outerContainer}>
+        <IndexDate
+          date={new Date(post.published_date)}
+          style={{ justifyContent: "flex-start", marginTop: "26px" }}
+        />
+        <div className={styles.mainContainer}>
+          <article className={styles.article}>
+            <h1 className={styles.title}>{post.title}</h1>
+            <p>
+              Published: {readablePublishDate}
+              {hasBeenUpdated && " | updated: " + readableUpdatedDate}
+            </p>
+            {post.body.map(item => parseComponent(item))}
+            <div className={styles.adjacentPosts}>
+              {previous && (
                 <Link
                   to={`/${location.pathname.split("/")[1]}/` + previous.slug}
                 >
@@ -53,8 +60,8 @@ const PostPage = ({ data, location, pageContext }) => {
                   />
                   <p>Previous: {previous.title}</p>
                 </Link>
-            )}
-            {next && (
+              )}
+              {next && (
                 <Link to={`/${location.pathname.split("/")[1]}/` + next.slug}>
                   <p>Next: {next.title}</p>
                   <img
@@ -64,18 +71,21 @@ const PostPage = ({ data, location, pageContext }) => {
                     src="/images/arrow.png"
                   />
                 </Link>
-            )}
+              )}
+            </div>
+          </article>
+          <div className={styles.sidebar}>
+            <ShareWidget pageUrl={location.href} pageTitle={post.title} />
+            <AboutWidget />
+            <NewsWidget />
+            <SearchWidget />
+            {/* TODO SUBSCRIBE */}
+            <FeaturedPageWidget />
+            <p>&copy; Danny Thorbjørn Wilkins</p>
           </div>
-        </article>
-        <div className={styles.sidebar}>
-          <ShareWidget pageUrl={location.href} pageTitle={post.title}/>
-          <AboutWidget />
-          <NewsWidget />
-          <SearchWidget />
-          {/* TODO SUBSCRIBE */}
-          <FeaturedPageWidget />
-          <p>&copy; Danny Thorbjørn Wilkins</p>
         </div>
+
+        <Tags tags={post.tags} style={{marginTop: '26px'}}/>
       </main>
     </>
   );

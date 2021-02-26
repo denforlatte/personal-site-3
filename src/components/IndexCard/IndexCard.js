@@ -6,6 +6,7 @@ import Img from "gatsby-image";
 import styles from "./indexCard.module.scss";
 import IndexDate from "../IndexDate";
 import MobileVegvisir from "../../components/MobileVegvisir";
+import Tags from "../common/Tags";
 
 const IndexCard = ({
   item: { title, summary, thumbnail, tags, published_date, slug },
@@ -65,17 +66,7 @@ const IndexCard = ({
           </div>
         </div>
 
-        <div className={styles.tagContainer}>
-          {tags.map(tag => (
-            <Link
-              to={"/tags/" + tag.slug}
-              className={styles.tag}
-              key={tag.name}
-            >
-              {tag.name}
-            </Link>
-          ))}
-        </div>
+        <Tags tags={tags} />
       </article>
     </>
   );

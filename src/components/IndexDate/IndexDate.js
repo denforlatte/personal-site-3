@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 import styles from "./indexDate.module.scss";
 
-const IndexDate = ({ date }) => (
-  <div className={styles.date}>
+const IndexDate = ({ date, style = {} }) => (
+  <div className={styles.date} style={style}>
     <div>
       <p className={styles.day}>{date.getDay()}</p>
       <p className={styles.month}>
@@ -17,6 +17,7 @@ const IndexDate = ({ date }) => (
 
 IndexDate.propTypes = {
   date: PropTypes.object.isRequired,
+  style: PropTypes.object,
 };
 
 export default IndexDate;
