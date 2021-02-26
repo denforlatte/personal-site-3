@@ -16,15 +16,16 @@
   margin-top: 20px;
   margin-bottom: 80px;
   max-width: $max-width;
-  padding: 10px;
+  padding: 16px;
 
-  @media screen and (max-width: $max-width) {
+  @media screen and (max-width: $max-width + 241) {
     margin-right: 8px;
     margin-left: 8px;
   }
   
   @media screen and (min-width: $breakpoint) {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 336px;
     margin-bottom: 20px;
   }
 }
@@ -73,12 +74,13 @@
 }
 
 .article {
+  padding-right: 16px;
   @media screen and (min-width: $breakpoint) {
     
   }
   
   @media screen and (min-width: $max-width) {
-    width: 860px;
+    //width: 860px;
   }
 }
 
@@ -88,19 +90,50 @@
   padding-top: 10px;
 
   > * + * {
-    margin-top: 10px;
+    margin-top: 30px;
   }
 
   @media screen and (min-width: $breakpoint) {
     border-top: none;
     border-left: 2px solid $colour-background;
     margin-top: 0;
-    margin-left: 10px;
     padding-top: 0;
-    padding-left: 10px;
+    padding-left: 16px;
   }
+}
 
-  @media screen and (min-width: $max-width) {
-    width: 320px;
+.sideDate {
+  justify-content: flex-start;
+  margin-top: 26px;
+
+  @media screen and (max-width: $max-width + 240) {
+    display: none;
   }
+}
+
+.sideTags {
+  margin-top: 26px;
+
+  @media screen and (max-width: $max-width + 240) {
+    display: none;
+  }
+}
+
+.inBodyDate {
+  font-size: 0.8rem;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: $max-width + 241) {
+    display: none;
+  }
+}
+
+.component {
+  margin-bottom: 40px;
+}
+
+
+// Start collapsing
+@media screen and (min-width: 1300px) {
+  
 }

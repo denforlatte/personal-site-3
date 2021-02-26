@@ -36,16 +36,16 @@ const PostPage = ({ data, location, pageContext }) => {
       <main className={styles.outerContainer}>
         <IndexDate
           date={new Date(post.published_date)}
-          style={{ justifyContent: "flex-start", marginTop: "26px" }}
+          className={styles.sideDate}
         />
         <div className={styles.mainContainer}>
           <article className={styles.article}>
             <h1 className={styles.title}>{post.title}</h1>
-            <p>
+            <p className={styles.inBodyDate}>
               Published: {readablePublishDate}
               {hasBeenUpdated && " | updated: " + readableUpdatedDate}
             </p>
-            {post.body.map(item => parseComponent(item))}
+            {post.body.map(item => <div className={styles.component}>{parseComponent(item)}</div>)}
             <div className={styles.adjacentPosts}>
               {previous && (
                 <Link
@@ -85,7 +85,7 @@ const PostPage = ({ data, location, pageContext }) => {
           </div>
         </div>
 
-        <Tags tags={post.tags} style={{marginTop: '26px'}}/>
+        <Tags tags={post.tags} className={styles.sideTags}/>
       </main>
     </>
   );

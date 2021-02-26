@@ -4,9 +4,9 @@ import { Link } from 'gatsby';
 
 import styles from './tags.module.scss';
 
-const Tags = ({tags, style}) => {
+const Tags = ({tags, className}) => {
   return (
-    <div className={styles.tagContainer} style={style}>
+    <div className={styles.tagContainer + (className ? ' ' + className : '')}>
       {tags.map(tag => (
         <Link to={"/tags/" + tag.slug} className={styles.tag} key={tag.name}>
           {tag.name}
@@ -18,7 +18,7 @@ const Tags = ({tags, style}) => {
 
 Tags.propTypes = {
   tags: PropTypes.array.isRequired,
-  style: PropTypes.object,
+  className: PropTypes.string,
 };
 
 export default Tags;
