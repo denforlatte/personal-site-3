@@ -24,9 +24,17 @@
   }
   
   @media screen and (min-width: $breakpoint) {
-    display: grid;
-    grid-template-columns: auto 336px;
     margin-bottom: 20px;
+  }
+  
+  @media screen and (min-width: 800px) { // 800 TODO make var?
+    display: grid;
+    grid-template-columns: auto 270px;
+    margin-bottom: 20px;
+  }
+  
+  @media screen and (min-width: $max-width) {
+    grid-template-columns: auto 336px;
   }
 }
 
@@ -75,13 +83,6 @@
 
 .article {
   padding-right: 16px;
-  @media screen and (min-width: $breakpoint) {
-    
-  }
-  
-  @media screen and (min-width: $max-width) {
-    //width: 860px;
-  }
 }
 
 .sidebar {
@@ -89,11 +90,21 @@
   margin-top: 10px;
   padding-top: 10px;
 
+  > * {
+    max-width: 400px;
+  }
+
   > * + * {
     margin-top: 30px;
   }
 
-  @media screen and (min-width: $breakpoint) {
+  @media screen and (max-width: $breakpoint) {
+    > * {
+      margin: auto;
+    }
+  }
+
+  @media screen and (min-width: 800px) { // 800 TODO make var?
     border-top: none;
     border-left: 2px solid $colour-background;
     margin-top: 0;
@@ -105,35 +116,27 @@
 .sideDate {
   justify-content: flex-start;
   margin-top: 26px;
-
-  @media screen and (max-width: $max-width + 240) {
-    display: none;
-  }
 }
 
 .sideTags {
   margin-top: 26px;
-
-  @media screen and (max-width: $max-width + 240) {
-    display: none;
-  }
 }
 
 .inBodyDate {
   font-size: 0.8rem;
   margin-bottom: 40px;
-
-  @media screen and (min-width: $max-width + 241) {
-    display: none;
-  }
 }
 
 .component {
   margin-bottom: 40px;
 }
 
+@media screen and (min-width: $max-width + 241) {
+  .sideDate {
+    display: flex !important;
+  }
 
-// Start collapsing
-@media screen and (min-width: 1300px) {
-  
+  .sideTags {
+    display: block;
+  }
 }

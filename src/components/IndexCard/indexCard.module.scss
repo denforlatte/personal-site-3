@@ -18,6 +18,7 @@
   grid-template-columns: 400px auto;
   height: 300px;
   max-width: $max-width;
+  overflow: hidden;
 }
 
 .textContainer {
@@ -87,6 +88,28 @@
   }
 }
 
+@media screen and (max-width: 800px) { // 800 TODO make var?
+    .tagsAndDate {
+      display: flex;
+      justify-content: space-between;
+  
+      p {
+        text-align: end;
+      }
+    }
+
+    .tag {
+      display: inline-block;
+      border-radius: 10px;
+      font-size: 14px;
+      height: auto;
+      width: auto;
+      line-height: 26px;
+      margin-right: 6px;
+      padding: 0 10px;
+    }
+}
+
 @media screen and (max-width: $breakpoint) { 
   .container {
     display: block;
@@ -117,30 +140,51 @@
     margin-bottom: 6px;
   }
 
-  .tagsAndDate {
-    display: flex;
-    justify-content: space-between;
-
-    p {
-      text-align: end;
-    }
-  }
-
-  .tag {
-    display: inline-block;
-    border-radius: 10px;
-    font-size: 14px;
-    height: auto;
-    width: auto;
-    line-height: 26px;
-    margin-right: 6px;
-    padding: 0 10px;
-  }
-
   .mobileDate {
     span {
       font-size: 30px;
       margin-right: 6px;
     }
+  }
+}
+
+@media screen and (min-width: 800px) { // 800 TODO make var?
+  .sideDate {
+    display: flex !important;
+  }
+
+  .sideTags {
+    display: block !important;
+  }
+}
+
+@media screen and (min-width: $breakpoint) and (max-width: 800px) {
+  .article {
+    
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media screen and (min-width: $breakpoint) and (max-width: 800px) {
+  .container {
+    height: getVWUnits(300px, 1000px);
+    grid-template-columns: getVWUnits(400px, 1000px) auto;
+  }
+
+  .textContainer {
+    padding: 14px;
+  
+    h2 {
+      font-size: getVWUnits(30px, 1000px);
+    }
+  
+    p {
+      font-size: getVWUnits(18px, 1000px);
+    }
+  }
+
+  .readMore {
+    font-size: getVWUnits(18px, 1000px);
   }
 }

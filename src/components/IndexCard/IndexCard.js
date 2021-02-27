@@ -18,7 +18,7 @@ const IndexCard = ({
     <>
       <MobileVegvisir />
       <article className={styles.article}>
-        <IndexDate date={published_date} />
+        <IndexDate date={published_date} className={styles.sideDate}/>
 
         <div className={styles.container}>
           {thumbnail ? (
@@ -66,7 +66,7 @@ const IndexCard = ({
           </div>
         </div>
 
-        <Tags tags={tags} />
+        <Tags tags={tags} className={styles.sideTags}/>
       </article>
     </>
   );
