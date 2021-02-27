@@ -45,7 +45,7 @@ const PostPage = ({ data, location, pageContext }) => {
               Published: {readablePublishDate}
               {hasBeenUpdated && " | updated: " + readableUpdatedDate}
             </p>
-            {post.body.map(item => <div className={styles.component}>{parseComponent(item)}</div>)}
+            {post.body.map(item => <div key={item.id} className={styles.component}>{parseComponent(item)}</div>)}
             <div className={styles.adjacentPosts}>
               {previous && (
                 <Link
@@ -110,6 +110,7 @@ export const query = graphql`
         slug
       }
       body {
+        id
         strapi_component
         text
         page {
@@ -129,6 +130,7 @@ export const query = graphql`
         slug
       }
       body {
+        id
         strapi_component
         text
         page {
