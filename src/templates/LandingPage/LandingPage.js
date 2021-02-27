@@ -20,7 +20,7 @@ const LandingPage = ({location, children, noVegvisir}) => {
           {children}
         </div>
         <div className={styles.image}>
-          <Img fluid={data.file.childImageSharp.fluid}/>
+          <Img fluid={data.file.childImageSharp.fluid} loading={'eager'} />
         </div>
       </main>
     </>
@@ -38,7 +38,7 @@ const querySketch = graphql`
     file(relativePath: { eq: "danny-sketch.png" }) {
       childImageSharp {
         fluid(quality: 100) {
-          ...GatsbyImageSharpFluid
+          ...GatsbyImageSharpFluid_noBase64
         }
       }
     }

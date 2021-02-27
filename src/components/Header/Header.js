@@ -38,7 +38,7 @@ const Header = ({ location, tags, toggleTag }) => {
   return (
     <header className={styles.header}>
       <div className={styles.banner}>
-        <Img className={styles.logo} fluid={data.file.childImageSharp.fluid} />
+        <Img className={styles.logo} fluid={data.file.childImageSharp.fluid} loading={'lazy'} />
         <div className={styles.primaryContainer}>
           <h1 className={styles.title}>Danny Thorbjørn Wilkins</h1>
           <p className={styles.tagline}>
@@ -70,7 +70,7 @@ const query = graphql`
     file(relativePath: { eq: "vegvisir.png" }) {
       childImageSharp {
         fluid(quality: 100) {
-          ...GatsbyImageSharpFluid
+          ...GatsbyImageSharpFluid_noBase64
         }
       }
     }
