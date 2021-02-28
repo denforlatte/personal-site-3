@@ -126,17 +126,36 @@
 
 .inBodyDate {
   font-size: 0.8rem;
-  margin-bottom: 40px;
 }
 
 .inBodyUpdateDate {
   display: none;
   font-size: 0.8rem;
+}
+
+.tagContainer {
   margin-bottom: 40px;
 }
 
 .component {
   margin-bottom: 40px;
+}
+
+.tag {
+  background: $colour-primary;
+  border-radius: 10px;
+  color: $colour-font-relief;
+  display: inline-block;
+  font-family: $font-primary;
+  font-size: 14px;
+  font-weight: 700;
+  height: auto;
+  width: auto;
+  line-height: 26px;
+  margin-right: 6px;
+  padding: 0 10px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 @media screen and (min-width: $max-width + 241) {
@@ -154,5 +173,9 @@
 
   .inBodyUpdateDate {
     display: block;
+  }
+
+  .tagContainer {
+    display: none;
   }
 }

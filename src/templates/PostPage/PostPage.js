@@ -41,16 +41,31 @@ const PostPage = ({ data, location, pageContext }) => {
         <div className={styles.mainContainer}>
           <article className={styles.article}>
             <h1 className={styles.title}>{post.title}</h1>
+
             <p className={styles.inBodyDate}>
               Published: {readablePublishDate}
               {hasBeenUpdated && " | updated: " + readableUpdatedDate}
             </p>
             {hasBeenUpdated && <p className={styles.inBodyUpdateDate}>updated: {readableUpdatedDate}</p>}
+
+            <div className={styles.tagContainer}>
+                {post.tags.map(tag => (
+                  <Link
+                    to={"/tags/" + tag.slug}
+                    className={styles.tag}
+                    key={tag.name}
+                  >
+                    {tag.name}
+                  </Link>
+                ))}
+              </div>
+
             {post.body.map(item => (
               <div key={item.id} className={styles.component}>
                 {parseComponent(item)}
               </div>
             ))}
+
             <div className={styles.adjacentPosts}>
               {previous && (
                 <Link
