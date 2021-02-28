@@ -45,7 +45,12 @@ const PostPage = ({ data, location, pageContext }) => {
               Published: {readablePublishDate}
               {hasBeenUpdated && " | updated: " + readableUpdatedDate}
             </p>
-            {post.body.map(item => <div key={item.id} className={styles.component}>{parseComponent(item)}</div>)}
+            {hasBeenUpdated && <p className={styles.inBodyUpdateDate}>updated: {readableUpdatedDate}</p>}
+            {post.body.map(item => (
+              <div key={item.id} className={styles.component}>
+                {parseComponent(item)}
+              </div>
+            ))}
             <div className={styles.adjacentPosts}>
               {previous && (
                 <Link
@@ -85,7 +90,7 @@ const PostPage = ({ data, location, pageContext }) => {
           </div>
         </div>
 
-        <Tags tags={post.tags} className={styles.sideTags}/>
+        <Tags tags={post.tags} className={styles.sideTags} />
       </main>
     </>
   );

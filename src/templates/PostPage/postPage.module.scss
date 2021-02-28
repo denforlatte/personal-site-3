@@ -129,6 +129,12 @@
   margin-bottom: 40px;
 }
 
+.inBodyUpdateDate {
+  display: none;
+  font-size: 0.8rem;
+  margin-bottom: 40px;
+}
+
 .component {
   margin-bottom: 40px;
 }
@@ -139,6 +145,14 @@
   }
 
   .sideTags {
+    display: block;
+  }
+
+  .inBodyDate {
+    display: none;
+  }
+
+  .inBodyUpdateDate {
     display: block;
   }
 }
