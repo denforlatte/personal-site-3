@@ -1,11 +1,12 @@
 import React from 'react';
-import { RichText, Pagination, Gallery } from '../components/bodyComponents';
+import { RichText, Pagination, Gallery, ProseText } from '../components/bodyComponents';
 
 const parseComponent = (component) => {
   switch (component.strapi_component) {
     case "body-components.rich-text":
       return <RichText key={component.id} component={component} />
-    // case "body-components.prose-text":
+    case "body-components.prose-text":
+      return <ProseText key={component.id} component={component} />
     case "body-components.gallery":
       return <Gallery  key={component.id} component={component} />
     case "body-components.pagination":
