@@ -4,43 +4,52 @@ import { Link } from "gatsby";
 import Img from "gatsby-image";
 
 import styles from "./indexCard.module.scss";
+
 import IndexDate from "../IndexDate";
+import DefaultImage from "../DefaultImage";
+import LocalThumbnail from "./LocalThumbnail";
 import MobileVegvisir from "../../components/MobileVegvisir";
 import Tags from "../common/Tags";
 
 const IndexCard = ({
-  item: { title, summary, thumbnail, tags, published_date, slug },
-  defaultImage,
+  item: { title, summary, thumbnail, tags, published_date, slug, path },
 }) => {
   published_date = new Date(published_date);
+  console.log("thumbnail", thumbnail);
+
+  const displayThumbnail = () => {
+    if (!thumbnail) {
+      return <DefaultImage className={styles.image} />;
+    }
+    if (thumbnail.localFile) {
+      return (
+        <Img
+          fluid={thumbnail.localFile.childImageSharp.fluid}
+          alt={thumbnail.alternativeText}
+          className={styles.image}
+        />
+      );
+    }
+    if (!thumbnail.localFile) { // Indicates this is from the search index
+      return <LocalThumbnail thumbnail={thumbnail} className={styles.image} />;
+    }
+  };
 
   return (
     <>
       <MobileVegvisir />
       <article className={styles.article}>
-        <IndexDate date={published_date} className={styles.sideDate}/>
+        <IndexDate date={published_date} className={styles.sideDate} />
 
         <div className={styles.container}>
-          {thumbnail ? (
-            <Img
-              fluid={thumbnail.localFile.childImageSharp.fluid}
-              alt={thumbnail.alternativeText}
-              className={styles.image}
-            />
-          ) : (
-            <Img
-              fluid={defaultImage.childImageSharp.fluid}
-              alt={"Probably unrelated Celtic doodle default image"}
-              className={styles.image}
-            />
-          )}
+          {displayThumbnail()}
 
           <div className={styles.textContainer}>
-            <Link to={slug}>
+            <Link to={path ? path : slug}>
               <h2>{title}</h2>
             </Link>
             <p>{summary}</p>
-            <Link to={slug} className={styles.readMore}>
+            <Link to={path ? path : slug} className={styles.readMore}>
               Read more
             </Link>
             <div className={styles.tagsAndDate}>
@@ -66,7 +75,7 @@ const IndexCard = ({
           </div>
         </div>
 
-        <Tags tags={tags} className={styles.sideTags}/>
+        <Tags tags={tags} className={styles.sideTags} />
       </article>
     </>
   );

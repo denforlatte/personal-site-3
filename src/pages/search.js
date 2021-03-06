@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Index } from 'elasticlunr';
-import { parseUrlQuery } from '../utilities';
+import { Index } from "elasticlunr";
+import { parseUrlQuery } from "../utilities";
 
 import SEO from "../components/seo";
 import Header from "../components/Header";
+import IndexCard from "../components/IndexCard";
 
 const SearchPage = ({ data, location }) => {
   const [query, setQuery] = useState(``);
@@ -15,10 +16,10 @@ const SearchPage = ({ data, location }) => {
       search({ target: { value: parseUrlQuery(location.search).q } });
     }
   }, [location.search]);
-  
+
   const getOrCreateIndex = () => Index.load(data.siteSearchIndex.index);
 
-  const search = (e) => {
+  const search = e => {
     const query = e.target.value;
     setQuery(query);
     const index = getOrCreateIndex();
@@ -31,16 +32,17 @@ const SearchPage = ({ data, location }) => {
     setResults(results);
   };
 
-  console.log('query', query);
-  console.log('results', results);
+  console.log("query", query);
+  console.log("results", results);
 
   return (
     <>
       <SEO title="Search" />
       <Header location={location} />
-      <main style={{ maxWidth: "1080px", padding: "8px", margin: "auto" }}>
-        <h1>Coming soon!</h1>
-        <p>Sooner than Half Life 3, at least.</p>
+      <main style={{ marginBottom: "50px" }}>
+        {results.map(item => (
+          <IndexCard key={item.id} item={item} />
+        ))}
       </main>
     </>
   );

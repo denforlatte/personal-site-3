@@ -64,12 +64,16 @@ module.exports = {
             summary: node => node.summary,
             path: node => `/projects/` + node.slug,
             thumbnail: node => node.thumbnail,
+            tags: node => node.tags,
+            published_date: node => node.published_date,
           },
           StrapiBlogPost: {
             title: node => node.title,
             summary: node => node.summary,
             path: node => `/blog/` + node.slug,
             thumbnail: node => node.thumbnail,
+            tags: node => node.tags,
+            published_date: node => node.published_date,
           }
         },
         // Optional filter to limit indexed nodes

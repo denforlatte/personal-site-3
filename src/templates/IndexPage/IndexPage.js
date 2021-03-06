@@ -49,7 +49,7 @@ const IndexPage = ({ location, nodes }) => {
       nodesCopy = nodesCopy.filter(nodeFilter);
 
     return nodesCopy.map(node => (
-      <IndexCard item={node} key={node.slug} defaultImage={data.file}/>
+      <IndexCard item={node} key={node.slug}/>
     ))
   }
 
@@ -78,13 +78,6 @@ const query = graphql`
         id
         projectCount
         blogPostCount
-      }
-    }
-    file(relativePath: { eq: "doodlysketch.jpg" }) {
-      childImageSharp {
-        fluid(quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
       }
     }
   }
