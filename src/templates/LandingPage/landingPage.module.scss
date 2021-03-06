@@ -75,37 +75,82 @@
       margin-bottom: 20px;
     }
   }
+}
 
-  > button {
-    background: $colour-primary;
-    border: none;
-    border-radius: 10px;
-    color: $colour-font-relief;
-    cursor: pointer;
-    font-family: $font-primary;  
-    font-size: 20px;
-    font-weight: 700;
-    height: 64px;
-    width: 160px;
-    margin: auto;
-    margin-top: 30px;
-    margin-bottom: 60px;
-    text-transform: uppercase;
+.button,
+.button:hover,
+.button:focus {
+  background: $colour-primary;
+  border: none;
+  border-radius: 10px;
+  color: $colour-font-relief;
+  cursor: pointer;
+  font-family: $font-primary;  
+  font-size: 20px;
+  font-weight: 700;
+  height: 64px;
+  width: 160px;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 60px;
+  text-transform: uppercase;
 
-    @media screen and (min-width: $breakpoint) and (max-width: $max-width) {
-      font-size: getVWUnits(20px, $max-width);
-      height: getVWUnits(64px, $max-width);
-      width: getVWUnits(160px, $max-width);
-      margin-top: getVWUnits(30px, $max-width);
-    }
+  @media screen and (min-width: $breakpoint) and (max-width: $max-width) {
+    font-size: getVWUnits(20px, $max-width);
+    height: getVWUnits(64px, $max-width);
+    width: getVWUnits(160px, $max-width);
+    margin-top: getVWUnits(30px, $max-width);
+  }
 
-    @media screen and (max-width: $breakpoint) {
-      margin-bottom: 20px;
-    }
+  @media screen and (max-width: $breakpoint) {
+    margin-bottom: 20px;
   }
 }
 
 form {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+
+  @media screen and (min-width: 1000px) {
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+}
+
+label {
+  color: $colour-font-main;
+  font-family: $font-primary;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+input {
+  margin-bottom: 30px;
+}
+
+.multilineInput, 
+.multilineInput:active,
+.multilineInput:focus,
+.multilineInput:hover {
+  height: 200px;
+  // resize: none;
+}
+
+.messageReceived {
+  height: 64px;
+  margin-top: 30px;
+  margin-bottom: 60px;
+  text-align: center;
+
+  @media screen and (min-width: $breakpoint) and (max-width: $max-width) {
+    height: getVWUnits(64px, $max-width);
+    margin-top: getVWUnits(30px, $max-width);
+  }
+
+  @media screen and (max-width: $breakpoint) {
+    margin-bottom: 20px;
+  }
 }

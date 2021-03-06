@@ -50,9 +50,18 @@ button:focus {
   outline: none;
 }
 
-input, 
-input:active,
-input:focus {
+input[type="text"], 
+input[type="text"]:active,
+input[type="text"]:focus,
+input[type="text"]:hover,
+input[type="email"], 
+input[type="email"]:active,
+input[type="email"]:focus,
+input[type="email"]:hover,
+textarea, 
+textarea:active,
+textarea:focus,
+textarea:hover {
   background-color: $colour-font-relief;
   border: none;
   border-bottom: 1px solid $colour-background;
@@ -61,6 +70,7 @@ input:focus {
   font-family: $font-primary;
   font-weight: 300;
   height: 26px;
+  padding: 2px 6px;
 }
 
 .prose-section {

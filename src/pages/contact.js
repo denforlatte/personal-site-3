@@ -1,25 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import SEO from "../components/seo";
 import LandingPage from "../templates/LandingPage";
 
+import styles from "../templates/LandingPage/landingPage.module.scss";
+
 const ContactPage = ({ location }) => {
+  const [name, setName] = useState(null);
+
+  const handleFormSubmission = e => {
+    e.preventDefault();
+    const data = new FormData(e.target);
+    setName(data.get("name"));
+  };
+
   return (
     <>
       <SEO title="Contact" />
       <LandingPage location={location}>
-        <form netlify>
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" />
+        <h2>Say hello</h2>
+        <form netlify="true" onSubmit={e => handleFormSubmission(e)}>
+          <label htmlFor="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="(optional)"/>
 
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" />
+          <label htmlFor="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="(optional)"/>
 
-          <label for="message">Message</label>
-          <input type="text" id="message" name="message" />
+          <label htmlFor="message">Message</label>
+          <textarea
+            type="text"
+            id="message"
+            name="message"
+            className={styles.multilineInput}
+            required
+          />
 
-          <input type="submit" value="Submit" />
+          {name == null ? (
+            <input type="submit" value="Submit" className={styles.button} />
+          ) : (
+            <p className={styles.messageReceived}>
+              Thanks for your message{name ? ", " + name : ""}!
+            </p>
+          )}
         </form>
       </LandingPage>
     </>

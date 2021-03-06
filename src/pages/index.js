@@ -1,8 +1,10 @@
 import React from "react";
-import { navigate } from 'gatsby';
+import { navigate } from "gatsby";
 
 import SEO from "../components/seo";
 import LandingPage from "../templates/LandingPage";
+
+import styles from "../templates/LandingPage/landingPage.module.scss";
 
 const Index = ({ location }) => {
   return (
@@ -21,7 +23,9 @@ const Index = ({ location }) => {
           Internet.
         </p>
         <p>Check out my projects and see what I’ve been up to lately.</p>
-        <button onClick={() => navigate("/projects")}>Projects</button>
+        <button className={styles.button} onClick={() => navigate("/projects")}>
+          Projects
+        </button>
       </LandingPage>
     </>
   );
