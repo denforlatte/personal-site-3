@@ -52,5 +52,29 @@ module.exports = {
     `gatsby-plugin-feed`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
+    {
+      resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
+      options: {
+        // Fields to index
+        // TODO do I want to add a search of the body? 
+        fields: [`title`, `summary`],
+        resolvers: {
+          StrapiProject: {
+            title: node => node.title,
+            summary: node => node.summary,
+            path: node => `/projects/` + node.slug,
+            thumbnail: node => node.thumbnail,
+          },
+          StrapiBlogPost: {
+            title: node => node.title,
+            summary: node => node.summary,
+            path: node => `/blog/` + node.slug,
+            thumbnail: node => node.thumbnail,
+          }
+        },
+        // Optional filter to limit indexed nodes
+        // filter: (node, getNode) => node.frontmatter.tags !== "exempt",
+      },
+    },
   ],
 }
