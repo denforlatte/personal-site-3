@@ -15,7 +15,6 @@ const IndexCard = ({
   item: { title, summary, thumbnail, tags, published_date, slug, path },
 }) => {
   published_date = new Date(published_date);
-  console.log("thumbnail", thumbnail);
 
   const displayThumbnail = () => {
     if (!thumbnail) {

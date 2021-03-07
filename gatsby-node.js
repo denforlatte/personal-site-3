@@ -21,10 +21,12 @@ exports.sourceNodes = ({
 
         if (tagIndex > 0) {
           orderedTags[tagIndex].projectCount++;
+          orderedTags[tagIndex].totalCount++;
         } else {
           const tagClone = { ...tag };
           tagClone.projectCount = 1;
           tagClone.blogPostCount = 0;
+          tagClone.totalCount = 1;
           orderedTags.push(tagClone);
         }
       });
@@ -38,10 +40,12 @@ exports.sourceNodes = ({
 
         if (tagIndex > 0) {
           orderedTags[tagIndex].blogPostCount++;
+          orderedTags[tagIndex].totalCount++;
         } else {
           const tagClone = { ...tag };
           tagClone.projectCount = 0;
           tagClone.blogPostCount = 1;
+          tagClone.totalCount = 1;
           orderedTags.push(tagClone);
         }
       });

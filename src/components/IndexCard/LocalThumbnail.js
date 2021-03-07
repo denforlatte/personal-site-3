@@ -9,8 +9,6 @@ const LocalThumbnail = ({thumbnail, className}) => {
 
   const i = data.allFile.nodes.findIndex(node => node.id === thumbnail.localFile___NODE);
 
-  console.log('i', i)
-
   return <Img fluid={data.allFile.nodes[i].childImageSharp.fluid} className={className} />;
 }
 
