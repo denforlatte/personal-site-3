@@ -58,7 +58,7 @@ const SearchPage = ({ data, location }) => {
     return false;
   };
 
-  const isFilterActive = (filter) => {
+  const isFilterActive = filter => {
     for (let i = 0; i < filter.length; i++) {
       if (filter[i].isActive) return true;
     }
@@ -70,7 +70,7 @@ const SearchPage = ({ data, location }) => {
     if (isFilterActive(types)) display = display.filter(typeFilter);
     if (isFilterActive(tags)) display = display.filter(tagFilter);
     return display;
-  }
+  };
 
   // TODO refact search filters and input?
   return (
@@ -78,27 +78,24 @@ const SearchPage = ({ data, location }) => {
       <SEO title="Search" />
       <Header location={location} />
       <main style={{ marginBottom: "50px" }}>
-        <div>
-          <label>
+        <div className="searchFiltersContainer">
+          <label htmlFor="search">
             Search:
-            <input
-              type="text"
-              aria-label="search input"
-              value={query}
-              onChange={e => search(e.target.value)}
-            ></input>
           </label>
-          <div>
-            <div>Refine your search</div>
-            <div>
-              <div>Content:</div>
-              <DesktopIndexFilter tags={types} toggleTag={handleToggleTypes} />
-            </div>
-            <div>
-              <div>Tags:</div>
-              <DesktopIndexFilter tags={tags} toggleTag={handleToggleTag} />
-            </div>
-          </div>
+          <input
+            id="search"
+            type="text"
+            aria-label="search input"
+            value={query}
+            onChange={e => search(e.target.value)}
+          />
+          <div className="filterHeader">Refine your search</div>
+          <div></div>
+          <div></div>
+          <div className="filterSubheader">Content:</div>
+          <DesktopIndexFilter tags={types} toggleTag={handleToggleTypes} />
+          <div className="filterSubheader">Tags:</div>
+          <DesktopIndexFilter tags={tags} toggleTag={handleToggleTag} />
         </div>
 
         {displayFilteredPosts().map(item => (

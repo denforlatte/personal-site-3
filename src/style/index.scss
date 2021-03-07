@@ -88,3 +88,67 @@ textarea:hover {
     text-indent: 0px; 
   }
 }
+
+.searchFiltersContainer {
+  display: grid;
+  grid-template-columns: 200px auto;
+  grid-template-rows: auto auto auto auto;
+  margin: auto;
+  margin-top: 20px;
+  max-width: $max-width;
+
+  > div {
+    color: $colour-font-main;
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  > label,
+  input {
+    margin-bottom: 20px;
+  }
+
+  > ul {
+    margin: 0;
+  }
+
+  > #search {
+    box-sizing: border-box;
+    display: block;
+    max-width: 400px;
+  }
+
+  > .filterHeader {
+    font-size: 1.5rem;
+    grid-column: span 2;
+    margin-bottom: 10px;
+  }
+
+  > .filterSubheader {
+    margin-left: 16px;
+  }
+
+  @media screen and (max-width: $max-width) {
+    margin-right: 8px;
+    margin-left: 8px;
+  }
+
+  @media screen and (max-width: $breakpoint) {
+    display: block;
+
+    > #search {
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    > .filterSubheader {
+      margin-bottom: 10px;
+      margin-left: 0;
+    }
+
+    > ul {
+      margin-bottom: 16px;
+    }
+  }
+}
