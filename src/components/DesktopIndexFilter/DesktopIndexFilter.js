@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import styles from "./desktopIndexFilter.module.scss";
 
 const DesktopIndexFilter = ({ tags, toggleTag }) => {
-  console.log('tags', tags)
   return (
     <ul className={styles.tagContainer}>
       {tags.map(tag => (

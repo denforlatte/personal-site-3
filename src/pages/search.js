@@ -8,68 +8,41 @@ import IndexCard from "../components/IndexCard";
 import DesktopIndexFilter from "../components/DesktopIndexFilter";
 
 const SearchPage = ({ data, location }) => {
+  const [index, setIndex] = useState(Index.load(data.siteSearchIndex.index));
   const [query, setQuery] = useState(``);
   const [results, setResults] = useState([]);
   const [types, setTypes] = useState([{ name: "Blog" }, { name: "Project" }]);
   const [tags, setTags] = useState(data.allStrapiTag.nodes);
 
-  console.log("types", types);
-
   useEffect(() => {
     if (location.search) {
-      setQuery(parseUrlQuery(location.search).q);
       search(parseUrlQuery(location.search).q);
     }
-  }, [location.search, tags, types]); // TODO This seems like a terrible idea. Jup. Causes reset to url query
+  }, [location.search]);
 
-  // TODO useEffect?
-  const getOrCreateIndex = () => Index.load(data.siteSearchIndex.index);
-
-  const handleToggleTag = name => {
-    const tagIndex = tags.findIndex(tag => tag.name === name);
-
-    // Create an array of cloned tags
-    let tagsCopy = tags.map(tag => ({ ...tag }));
-    tagsCopy[tagIndex].isActive = !tags[tagIndex].isActive;
-
-    setTags(tagsCopy);
+  const handleToggle = (items, setItems, name) => {
+    const itemIndex = items.findIndex(item => item.name === name);
+    let itemsCopy = items.map(item => ({ ...item }));
+    itemsCopy[itemIndex].isActive = !items[itemIndex].isActive;
+    setItems(itemsCopy);
   };
 
-  const handleToggleTypes = name => {
-    const typeIndex = types.findIndex(type => type.name === name);
-
-    // Create an array of cloned types
-    let typesCopy = types.map(type => ({ ...type }));
-    typesCopy[typeIndex].isActive = !types[typeIndex].isActive;
-
-    setTypes(typesCopy);
-  };
+  const handleToggleTag = name => handleToggle(tags, setTags, name);
+  const handleToggleTypes = name => handleToggle(types, setTypes, name);
 
   const search = query => {
     setQuery(query);
-    const index = getOrCreateIndex();
 
-    let results = index
+    const results = index
       .search(query, {})
-      // Map over each ID and return the full document
       .map(({ ref }) => index.documentStore.getDoc(ref));
-
-    // TODO extract
-    // TODO filter by content
-    if (isTypeFilterActive()) results = results.filter(typeFilter);
-
-    // TODO extract
-    // filter by tags
-    if (isTagFilterActive()) results = results.filter(tagFilter);
 
     setResults(results);
   };
 
   const tagFilter = node => {
     for (let i = 0; i < node.tags.length; i++) {
-      const tagName = node.tags[i].name;
-
-      if (tags.find(tag => tag.name === tagName).isActive) {
+      if (tags.find(tag => tag.name === node.tags[i].name).isActive) {
         return true;
       }
     }
@@ -78,37 +51,26 @@ const SearchPage = ({ data, location }) => {
 
   const typeFilter = node => {
     for (let i = 0; i < types.length; i++) {
-      if (types[i].isActive) {
-        if (node.id.includes(types[i].name)) {
-          return true;
-        }
+      if (types[i].isActive && node.id.includes(types[i].name)) {
+        return true;
       }
     }
     return false;
   };
 
-  const isTagFilterActive = () => {
-    let isFilterActive = false;
-
-    tags.forEach(tag => {
-      if (tag.isActive) isFilterActive = true;
-    });
-
-    return isFilterActive;
+  const isFilterActive = (filter) => {
+    for (let i = 0; i < filter.length; i++) {
+      if (filter[i].isActive) return true;
+    }
+    return false;
   };
 
-  const isTypeFilterActive = () => {
-    let isFilterActive = false;
-
-    types.forEach(type => {
-      if (type.isActive) isFilterActive = true;
-    });
-
-    return isFilterActive;
-  };
-
-  console.log("results", results);
-  console.log("types", types);
+  const displayFilteredPosts = () => {
+    let display = [...results];
+    if (isFilterActive(types)) display = display.filter(typeFilter);
+    if (isFilterActive(tags)) display = display.filter(tagFilter);
+    return display;
+  }
 
   // TODO refact search filters and input?
   return (
@@ -139,7 +101,7 @@ const SearchPage = ({ data, location }) => {
           </div>
         </div>
 
-        {results.map(item => (
+        {displayFilteredPosts().map(item => (
           <IndexCard key={item.id} item={item} />
         ))}
       </main>
