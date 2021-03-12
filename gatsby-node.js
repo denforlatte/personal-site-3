@@ -166,7 +166,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         path: `tags/${node.slug}`,
         component: TagPage,
         context: {
-          id: node.id,
+          slug: node.slug,
         },
       });
     });
