@@ -122,6 +122,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           node {
             slug
             id
+            name
           }
         }
       }
@@ -134,6 +135,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     const tags = res.data.allStrapiTag.edges;
 
     blogPosts.forEach(({ node, previous, next }) => {
+      // TODO This just isn't working. Creates an issue if the nodes are still there.
       if (node.is_published || process.env.NODE_ENV === "development") {
         createPage({
           path: `blog/${node.slug}`,
@@ -148,6 +150,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
 
     projects.forEach(({ node, previous, next }) => {
+      // TODO This just isn't working. Creates an issue if the nodes are still there.
       if (node.is_published || process.env.NODE_ENV === "development") {
         createPage({
           path: `projects/${node.slug}`,
@@ -167,6 +170,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         component: TagPage,
         context: {
           slug: node.slug,
+          name: node.name,
         },
       });
     });
@@ -185,34 +189,24 @@ exports.createSchemaCustomization = ({ actions }) => {
 
   // TODO remove references to markdown
   createTypes(`
-    type SiteSiteMetadata {
-      author: Author
-      siteUrl: String
-      social: Social
-    }
+  type StrapiBlogPost implements Node {
+    body: [body]
+    publishedAt: String
+  }
 
-    type Author {
-      name: String
-      summary: String
-    }
+  type StrapiProject implements Node {
+    body: [body]
+    publishedAt: String
+  }
+  
+  type body {
+    text: String
+    paginationPage: [page]
+  }
 
-    type Social {
-      twitter: String
-    }
-
-    type MarkdownRemark implements Node {
-      frontmatter: Frontmatter
-      fields: Fields
-    }
-
-    type Frontmatter {
-      title: String
-      description: String
-      date: Date @dateformat
-    }
-
-    type Fields {
-      slug: String
-    }
+  type page {
+    text: String
+    title: String
+  }
   `);
 };

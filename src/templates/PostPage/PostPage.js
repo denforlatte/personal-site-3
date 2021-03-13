@@ -67,7 +67,7 @@ const PostPage = ({ data, location, pageContext }) => {
             ))}
 
             <div className={styles.adjacentPosts}>
-              {previous && (
+              {previous ? (
                 <Link
                   to={`/${location.pathname.split("/")[1]}/` + previous.slug}
                 >
@@ -80,8 +80,8 @@ const PostPage = ({ data, location, pageContext }) => {
                   />
                   <p>Previous: {previous.title}</p>
                 </Link>
-              )}
-              {next && (
+              ) : <div/>}
+              {next ? (
                 <Link to={`/${location.pathname.split("/")[1]}/` + next.slug}>
                   <p>Next: {next.title}</p>
                   <img
@@ -91,7 +91,7 @@ const PostPage = ({ data, location, pageContext }) => {
                     src="/images/arrow.png"
                   />
                 </Link>
-              )}
+              ) : <div/>}
             </div>
           </article>
           <div className={styles.sidebar}>
@@ -118,7 +118,7 @@ PostPage.propTypes = {
 };
 
 export const query = graphql`
-  query blogPostById($id: String!) {
+  query postById($id: String!) {
     strapiBlogPost(id: { eq: $id }) {
       title
       slug

@@ -64,7 +64,7 @@ const IndexCard = ({
                 ))}
               </div>
               <p className={styles.mobileDate}>
-                <span>{published_date.getDay()}</span>{" "}
+                <span>{published_date.getDate()}</span>{" "}
                 {published_date.toLocaleDateString("default", {
                   month: "short",
                 })}{" "}

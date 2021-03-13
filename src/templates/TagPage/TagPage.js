@@ -3,11 +3,9 @@ import PropTypes from "prop-types";
 
 import Header from "../../components/Header";
 import IndexCard from "../../components/IndexCard";
+import styles from './tagPage.module.scss';
 
 const TagPage = ({ data, location, pageContext }) => {
-  console.log('pageContext', pageContext);
-  console.log("data :>> ", data);
-
   let nodes = [...data.allStrapiProject.nodes, ...data.allStrapiBlogPost.nodes];
   nodes = nodes.sort(
     (a, b) => new Date(b.published_date) - new Date(a.published_date)
@@ -17,6 +15,7 @@ const TagPage = ({ data, location, pageContext }) => {
     <>
       <Header location={location} />
       <main style={{ marginBottom: "50px" }}>
+        <h2 className={styles.title}>{pageContext.name} posts</h2>
         {nodes.map(node => (
           <IndexCard item={node} key={node.slug} />
         ))}

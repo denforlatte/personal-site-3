@@ -6,7 +6,7 @@ import styles from "./indexDate.module.scss";
 const IndexDate = ({ date, className }) => (
   <div className={styles.date + (className ? ' ' + className : '')}>
     <div>
-      <p className={styles.day}>{date.getDay()}</p>
+      <p className={styles.day}>{date.getDate()}</p>
       <p className={styles.month}>
         {date.toLocaleDateString("default", { month: "short" })}
       </p>
