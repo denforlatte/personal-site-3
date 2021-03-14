@@ -24,7 +24,8 @@ module.exports = {
       resolve: 'gatsby-source-strapi',
       options: {
         apiURL: process.env.STRAPI_HOST,
-        queryLimit: 1000,
+        // hacky AF way to add a query to all Strapi requests...
+        queryLimit: process.env.NODE_ENV === "development" ? 1000 : '1000&is_published=true',
         contentTypes: [
           // List of the Content Types you want to be able to request from Gatsby.
           'blog-post',
