@@ -1,5 +1,5 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 
 import styles from './featuredPage.module.scss';
@@ -10,15 +10,21 @@ const FeaturedPageWidget = () => {
   return (
     <div>
       <h4>Featured Page</h4>
-      <Img
-        fluid={data.file.childImageSharp.fluid}
-        alt={"Probably unrelated Celtic doodle default image"}
-        className={styles.image}
-      />
-      <p className={styles.pageTitle}>My First Blog Post</p>
-      <p className={styles.pageSummary} >
-        This is where I would write a very short summary about some cool page I
-        want to draw special attention to.
+      <Link to='/blog/welcome-to-my-website'>
+        <Img
+          fluid={data.file.childImageSharp.fluid}
+          alt={"Probably unrelated Celtic doodle default image"}
+          className={styles.image}
+        />
+      </Link>
+      
+      <Link to='/blog/welcome-to-my-website'>
+        <p className={styles.pageTitle}>My First Blog Post</p>
+      </Link>
+      <p className={styles.pageSummary}>
+        The first blog post on my new website, hopefully the first of many. In
+        this post I talk about the technologies I used to build this site as
+        well as where I hope to take it. Join me for the adventure!
       </p>
     </div>
   );
