@@ -6,6 +6,10 @@ import IndexCard from "../../components/IndexCard";
 import styles from './tagPage.module.scss';
 
 const TagPage = ({ data, location, pageContext }) => {
+  // Add path to nodes
+  data.allStrapiBlogPost.nodes.forEach(node => node.path = '/blog/' + node.slug);
+  data.allStrapiProject.nodes.forEach(node => node.path = '/projects/' + node.slug);
+
   let nodes = [...data.allStrapiProject.nodes, ...data.allStrapiBlogPost.nodes];
   nodes = nodes.sort(
     (a, b) => new Date(b.published_date) - new Date(a.published_date)
