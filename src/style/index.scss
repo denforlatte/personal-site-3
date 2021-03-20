@@ -120,12 +120,14 @@ textarea:hover {
   }
 
   > .filterHeader {
+    font-family: $font-primary;
     font-size: 1.5rem;
     grid-column: span 2;
     margin-bottom: 10px;
   }
 
   > .filterSubheader {
+    font-family: $font-primary;
     margin-left: 16px;
   }
 

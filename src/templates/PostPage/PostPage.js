@@ -19,8 +19,9 @@ const PostPage = ({ data, location, pageContext }) => {
   const post = data.strapiBlogPost ?? data.strapiProject;
   const { previous, next } = pageContext;
 
+  // If the updateAt is more than 24 hours after publish, show the updated date
   const hasBeenUpdated =
-    new Date(post.updatedAt) > new Date(post.published_date);
+    new Date(post.updatedAt) - new Date(post.published_date) > new Date(24 * 60 * 60 * 1000);
   const readablePublishDate = new Date(
     post.published_date
   ).toLocaleString("en-GB", { dateStyle: "long" });
