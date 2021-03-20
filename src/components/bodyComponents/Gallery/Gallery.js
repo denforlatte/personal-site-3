@@ -10,6 +10,21 @@ import styles from "./gallery.module.scss";
 const Gallery = ({ component }) => {
   const [activeImage, setActiveImage] = useState(null);
 
+  const keyboardInputHandler = e => {
+    if (e.key === "ArrowLeft") {
+      setActiveImage(i => {
+        if (i === null) return null;
+        return i <= 0 ? component.image.length - 1 : i - 1;
+      });
+    }
+    if (e.key === "ArrowRight") {
+      setActiveImage(i => {
+        if (i === null) return null;
+        return i >= component.image.length - 1 ? 0 : i + 1;
+      });
+    }
+  };
+
   useEffect(() => {
     document.addEventListener("keyup", keyboardInputHandler);
     return () => {
@@ -26,21 +41,6 @@ const Gallery = ({ component }) => {
   const navigateRight = () => {
     if (activeImage !== null) {
       setActiveImage(i => (i >= component.image.length - 1 ? 0 : i + 1));
-    }
-  };
-
-  const keyboardInputHandler = e => {
-    if (e.key === "ArrowLeft") {
-      setActiveImage(i => {
-        if (i === null) return null;
-        return i <= 0 ? component.image.length - 1 : i - 1;
-      });
-    }
-    if (e.key === "ArrowRight") {
-      setActiveImage(i => {
-        if (i === null) return null;
-        return i >= component.image.length - 1 ? 0 : i + 1;
-      });
     }
   };
 

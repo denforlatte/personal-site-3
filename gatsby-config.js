@@ -50,7 +50,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-feed`,
+    //`gatsby-plugin-feed`, for an RSS feed. May need to re-add markdown remark
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
     {
