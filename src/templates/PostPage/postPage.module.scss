@@ -116,11 +116,6 @@
   }
 }
 
-.sideDate {
-  justify-content: flex-start;
-  margin-top: 26px;
-}
-
 .sideTags {
   margin-top: 26px;
 }
@@ -162,6 +157,8 @@
 @media screen and (min-width: $max-width + 241) {
   .sideDate {
     display: flex !important;
+    justify-content: flex-start !important;
+    margin-top: 26px;
   }
 
   .sideTags {
