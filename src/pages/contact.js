@@ -10,17 +10,15 @@ const ContactPage = ({ location }) => {
   const [name, setName] = useState(null);
 
   const handleFormSubmission = e => {
-    console.log('handling form submission');
     e.preventDefault();
     const formData = new FormData(e.target);
 
-    fetch("/", { // TODO does this need to be /contact ?
+    fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData).toString(),
     })
       .then(() => {
-        console.log("Form successfully submitted");
         setName(formData.get("name"));
       })
       .catch(error => {
@@ -33,7 +31,6 @@ const ContactPage = ({ location }) => {
       <SEO title="Contact" />
       <LandingPage location={location}>
         <h2>Say hello</h2>
-        <p>Ajax test</p>
         <form
           id="contact-form"
           name="contact"
