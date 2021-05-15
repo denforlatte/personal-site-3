@@ -14,10 +14,10 @@
   background-color: $colour-background-relief;
   box-sizing: border-box;
   flex-grow: 1;
-  margin-top: 20px;
   margin-bottom: 80px;
   max-width: $max-width;
-  padding: 16px;
+  padding-right: 16px;
+  padding-left: 16px;
 
   @media screen and (max-width: $max-width + 241) {
     margin-right: 8px;
