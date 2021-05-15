@@ -39,7 +39,7 @@ const ContactPage = ({ location }) => {
           data-netlify="true"
           onSubmit={e => handleFormSubmission(e)}
         >
-          <input type="hidden" name="form-name" value="contact" />
+          {/* <input type="hidden" name="form-name" value="contact" /> */}
 
           <label htmlFor="name">Name</label>
           <input type="text" id="name" name="name" placeholder="(optional)" />
