@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { Index } from "elasticlunr";
 import { parseUrlQuery } from "../utilities";
 
@@ -8,17 +8,12 @@ import IndexCard from "../components/IndexCard";
 import DesktopIndexFilter from "../components/DesktopIndexFilter";
 
 const SearchPage = ({ data, location }) => {
-  const [index, setIndex] = useState(Index.load(data.siteSearchIndex.index));
   const [query, setQuery] = useState(``);
   const [results, setResults] = useState([]);
   const [types, setTypes] = useState([{ name: "Blog" }, { name: "Project" }]);
   const [tags, setTags] = useState(data.allStrapiTag.nodes);
 
-  useEffect(() => {
-    if (location.search) {
-      search(parseUrlQuery(location.search).q);
-    }
-  }, [location.search]);
+  const index = useMemo(() => Index.load(data.siteSearchIndex.index), [data.siteSearchIndex.index]);
 
   const handleToggle = (items, setItems, name) => {
     const itemIndex = items.findIndex(item => item.name === name);
@@ -30,7 +25,7 @@ const SearchPage = ({ data, location }) => {
   const handleToggleTag = name => handleToggle(tags, setTags, name);
   const handleToggleTypes = name => handleToggle(types, setTypes, name);
 
-  const search = query => {
+  const search = useCallback(query => {
     setQuery(query);
 
     const results = index
@@ -38,7 +33,13 @@ const SearchPage = ({ data, location }) => {
       .map(({ ref }) => index.documentStore.getDoc(ref));
 
     setResults(results);
-  };
+  }, [index]);
+
+  useEffect(() => {
+    if (location.search) {
+      search(parseUrlQuery(location.search).q);
+    }
+  }, [location.search, search]);
 
   const tagFilter = node => {
     for (let i = 0; i < node.tags.length; i++) {

@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 
 import styles from "./paginationNav.module.scss";
 
-const PaginationNav = ({ numberOfPages, currentPage, setCurrentPage }) => {
+const PaginationNav = ({ numberOfPages, currentPage, switchToPage }) => {
   let pageNumbers = [];
 
   for (let i = 0; i < numberOfPages; i++) {
     pageNumbers.push(
       <li key={i}>
         <button
-          onClick={() => setCurrentPage(i)}
+          onClick={() => switchToPage(i)}
           className={
             styles.button + (currentPage === i ? " " + styles.activeNumber : "")
           }
@@ -24,7 +24,7 @@ const PaginationNav = ({ numberOfPages, currentPage, setCurrentPage }) => {
   return (
     <nav className={styles.nav}>
       <button
-        onClick={() => setCurrentPage(currentPage - 1)}
+        onClick={() => switchToPage(currentPage - 1)}
         className={
           styles.button + (currentPage <= 0 ? " " + styles.hidden : "")
         }
@@ -33,7 +33,7 @@ const PaginationNav = ({ numberOfPages, currentPage, setCurrentPage }) => {
       </button>
       <ul className={styles.pageNumbers}>{pageNumbers}</ul>
       <button
-        onClick={() => setCurrentPage(currentPage + 1)}
+        onClick={() => switchToPage(currentPage + 1)}
         className={
           styles.button +
           (currentPage >= numberOfPages - 1 ? " " + styles.hidden : "")
@@ -48,7 +48,7 @@ const PaginationNav = ({ numberOfPages, currentPage, setCurrentPage }) => {
 PaginationNav.propTypes = {
   numberOfPages: PropTypes.number.isRequired,
   currentPage: PropTypes.number.isRequired,
-  setCurrentPage: PropTypes.func.isRequired,
+  switchToPage: PropTypes.func.isRequired,
 };
 
 export default PaginationNav;

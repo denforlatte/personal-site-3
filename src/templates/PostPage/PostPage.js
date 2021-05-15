@@ -63,7 +63,7 @@ const PostPage = ({ data, location, pageContext }) => {
 
             {post.body.map(item => (
               <div key={item.id} className={styles.component}>
-                {parseComponent(item)}
+                {parseComponent(item, location)}
               </div>
             ))}
 

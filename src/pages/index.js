@@ -1,5 +1,5 @@
 import React from "react";
-import { navigate, Link } from "gatsby";
+import { Link } from "gatsby";
 
 import SEO from "../components/seo";
 import LandingPage from "../templates/LandingPage";
