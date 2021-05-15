@@ -10,6 +10,7 @@ const ContactPage = ({ location }) => {
   const [name, setName] = useState(null);
 
   const handleFormSubmission = e => {
+    console.log('handling form submission');
     e.preventDefault();
     const formData = new FormData(e.target);
 
@@ -32,6 +33,7 @@ const ContactPage = ({ location }) => {
       <SEO title="Contact" />
       <LandingPage location={location}>
         <h2>Say hello</h2>
+        <p>Ajax test</p>
         <form
           id="contact-form"
           name="contact"
