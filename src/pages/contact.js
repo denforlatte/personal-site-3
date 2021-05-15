@@ -36,9 +36,9 @@ const ContactPage = ({ location }) => {
             required
           />
 
-          {/* {name == null ? (
+          {/* {name == null ? ( */}
             <input type="submit" value="Submit" className={styles.button} />
-          ) : (
+          {/* ) : (
             <p className={styles.messageReceived}>
               Thanks for your message{name ? ", " + name : ""}!
             </p>
