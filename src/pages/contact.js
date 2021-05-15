@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 import SEO from "../components/seo";
@@ -7,20 +7,20 @@ import LandingPage from "../templates/LandingPage";
 import styles from "../templates/LandingPage/landingPage.module.scss";
 
 const ContactPage = ({ location }) => {
-  const [name, setName] = useState(null);
+  // const [name, setName] = useState(null);
 
-  const handleFormSubmission = e => {
-    e.preventDefault();
-    const data = new FormData(e.target);
-    setName(data.get("name"));
-  };
+  // const handleFormSubmission = e => {
+  //   e.preventDefault();
+  //   const data = new FormData(e.target);
+  //   setName(data.get("name"));
+  // };
 
   return (
     <>
       <SEO title="Contact" />
       <LandingPage location={location}>
         <h2>Say hello</h2>
-        <form netlify="true" onSubmit={e => handleFormSubmission(e)}>
+        <form name="contact" method="POST" data-netlify="true">
           <label htmlFor="name">Name</label>
           <input type="text" id="name" name="name" placeholder="(optional)"/>
 
@@ -36,13 +36,13 @@ const ContactPage = ({ location }) => {
             required
           />
 
-          {name == null ? (
+          {/* {name == null ? (
             <input type="submit" value="Submit" className={styles.button} />
           ) : (
             <p className={styles.messageReceived}>
               Thanks for your message{name ? ", " + name : ""}!
             </p>
-          )}
+          )} */}
         </form>
       </LandingPage>
     </>
