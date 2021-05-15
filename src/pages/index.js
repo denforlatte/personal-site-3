@@ -1,5 +1,5 @@
 import React from "react";
-import { navigate } from "gatsby";
+import { navigate, Link } from "gatsby";
 
 import SEO from "../components/seo";
 import LandingPage from "../templates/LandingPage";
@@ -23,9 +23,9 @@ const Index = ({ location }) => {
           Internet.
         </p>
         <p>Check out my projects and see what I’ve been up to lately.</p>
-        <button className={styles.button} onClick={() => navigate("/projects")}>
+        <Link className={styles.button} to="/projects">
           Projects
-        </button>
+        </Link>
       </LandingPage>
     </>
   );

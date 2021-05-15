@@ -80,16 +80,19 @@
 .button,
 .button:hover,
 .button:focus {
+  align-items: center;
   background: $colour-primary;
   border: none;
   border-radius: 10px;
   color: $colour-font-relief;
   cursor: pointer;
+  display: flex;
   font-family: $font-primary;  
   font-size: 20px;
   font-weight: 700;
   height: 64px;
   width: 160px;
+  justify-content: center;
   margin: auto;
   margin-top: 30px;
   margin-bottom: 60px;
