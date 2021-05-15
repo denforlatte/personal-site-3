@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { parseUrlQuery, richTextToProse } from '../../../utilities';
@@ -8,19 +8,19 @@ import PaginationNav from '../../common/PaginationNav';
 const Pagination = ({component, location}) => {
   const [currentPage, setCurrentPage] = useState(0);
   const { page } = component;
-
-  const switchToPage = useCallback(targetPage => {
-    setCurrentPage(targetPage);
-    window.history.pushState({}, '', location.pathname + '?p=' + (targetPage + 1));
-  }, [location.pathname]);
   
   useEffect(() => {
     const jumpToPage = Number(parseUrlQuery(location.search).p - 1);
     if (jumpToPage) {
-      switchToPage(jumpToPage);
+      setCurrentPage(jumpToPage);
     }
     
-  }, [location.search, switchToPage]);
+  }, [location.search]);
+
+  const switchToPage = targetPage => {
+    setCurrentPage(targetPage);
+    window.history.pushState({}, '', location.pathname + '?p=' + (targetPage + 1));
+  };
 
   return (
     <>
