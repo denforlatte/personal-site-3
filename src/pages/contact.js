@@ -21,6 +21,8 @@ const ContactPage = ({ location }) => {
       <LandingPage location={location}>
         <h2>Say hello</h2>
         <form name="contact" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact"/>
+
           <label htmlFor="name">Name</label>
           <input type="text" id="name" name="name" placeholder="(optional)"/>
 
@@ -37,6 +39,7 @@ const ContactPage = ({ location }) => {
           />
 
           {/* {name == null ? ( */}
+            {/* <label htmlFor="submit">Submit</label> */}
             <input type="submit" value="Submit" className={styles.button} />
           {/* ) : (
             <p className={styles.messageReceived}>
