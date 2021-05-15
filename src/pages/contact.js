@@ -21,7 +21,7 @@ const ContactPage = ({ location }) => {
     })
       .then(() => {
         console.log("Form successfully submitted");
-        setName(data.get("name"));
+        setName(formData.get("name"));
       })
       .catch(error => {
         console.error(error);
@@ -39,9 +39,9 @@ const ContactPage = ({ location }) => {
           name="contact"
           method="POST"
           data-netlify="true"
-          onSubmit={e => handleFormSubmission(e)}
+          onSubmit={handleFormSubmission}
         >
-          {/* <input type="hidden" name="form-name" value="contact" /> */}
+          <input type="hidden" name="form-name" value="contact" />
 
           <label htmlFor="name">Name</label>
           <input type="text" id="name" name="name" placeholder="(optional)" />
