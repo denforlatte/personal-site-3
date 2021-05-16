@@ -10,7 +10,7 @@ const Pagination = ({component, location}) => {
   const { page } = component;
   
   useEffect(() => {
-    const jumpToPage = Number(parseUrlQuery(location.search).p - 1);
+    const jumpToPage = Number(parseUrlQuery(location.search).page - 1);
     if (jumpToPage) {
       setCurrentPage(jumpToPage);
     }
@@ -19,7 +19,7 @@ const Pagination = ({component, location}) => {
 
   const switchToPage = targetPage => {
     setCurrentPage(targetPage);
-    window.history.pushState({}, '', location.pathname + '?p=' + (targetPage + 1));
+    window.history.pushState({}, '', location.pathname + '?page=' + (targetPage + 1));
   };
 
   return (

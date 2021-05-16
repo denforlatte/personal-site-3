@@ -36,9 +36,13 @@ const ContactPage = ({ location }) => {
           name="contact"
           method="POST"
           data-netlify="true"
+          netlify-honeypot="bot-field"
           onSubmit={handleFormSubmission}
         >
           <input type="hidden" name="form-name" value="contact" />
+
+          <label className={styles.hidden} htmlFor="bot-field">Don’t fill this out if you’re human:</label>
+          <input className={styles.hidden} type="text" name="bot-field" />
 
           <label htmlFor="name">Name</label>
           <input type="text" id="name" name="name" placeholder="(optional)" />
