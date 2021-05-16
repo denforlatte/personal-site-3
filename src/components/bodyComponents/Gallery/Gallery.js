@@ -66,7 +66,7 @@ const Gallery = ({ component }) => {
             className={styles.imageFocusBackground}
             onClick={() => setActiveImage(null)}
           >
-            <div>Close [x]</div>
+            <div className={styles.closeButton}>Close [x]</div>
           </div>
           <div className={styles.imageFocusInnerWrapper}>
             <div className={styles.navArrow} onClick={() => navigateLeft()}>
