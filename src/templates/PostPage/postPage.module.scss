@@ -82,10 +82,6 @@
   }
 }
 
-.article {
-  padding-right: 16px;
-}
-
 .sidebar {
   border-top: 2px solid $colour-background;
   margin-top: 10px;
@@ -151,6 +147,13 @@
   padding: 0 10px;
   text-transform: uppercase;
   text-align: center;
+}
+
+// TODO standardise this 800px sidebar switch thing
+@media screen and (min-width: 800px){
+  .article {
+    padding-right: 16px;
+  }
 }
 
 @media screen and (min-width: $max-width + 241) {
