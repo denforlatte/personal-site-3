@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import Img from "gatsby-image";
-import styles from "./header.module.scss";
+import * as styles from "./header.module.scss";
 
 import SocialLinks from "./SocialLinks";
 import MobileNav from "../MobileNav";

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import styles from "./paginationNav.module.scss";
+import * as styles from "./paginationNav.module.scss";
 
 const PaginationNav = ({ numberOfPages, currentPage, switchToPage }) => {
   let pageNumbers = [];

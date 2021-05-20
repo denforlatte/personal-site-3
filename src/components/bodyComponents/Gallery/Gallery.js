@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Img from "gatsby-image";
 
-import styles from "./gallery.module.scss";
+import * as styles from "./gallery.module.scss";
 
 /* eslint-disable */
 // TODO refactor this.

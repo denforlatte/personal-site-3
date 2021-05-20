@@ -6,7 +6,7 @@ import Img from 'gatsby-image';
 import Header from "../../components/Header";
 import MobileVegvisir from '../../components/MobileVegvisir';
 
-import styles from './landingPage.module.scss';
+import * as styles from './landingPage.module.scss';
 
 const LandingPage = ({location, children, noVegvisir}) => {
   const data = useStaticQuery(querySketch);

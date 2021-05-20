@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import Img from "gatsby-image";
 
-import styles from "./indexCard.module.scss";
+import * as styles from "./indexCard.module.scss";
 
 import IndexDate from "../IndexDate";
 import DefaultImage from "../DefaultImage";
@@ -18,19 +18,18 @@ const IndexCard = ({
 
   const displayThumbnail = () => {
     if (!thumbnail) {
-      return <DefaultImage className={styles.image} />;
+      return <DefaultImage />;
     }
     if (thumbnail.localFile) {
       return (
         <Img
           fluid={thumbnail.localFile.childImageSharp.fluid}
           alt={thumbnail.alternativeText}
-          className={styles.image}
         />
       );
     }
     if (!thumbnail.localFile) { // Indicates this is from the search index
-      return <LocalThumbnail thumbnail={thumbnail} className={styles.image} />;
+      return <LocalThumbnail thumbnail={thumbnail} />;
     }
   };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import styles from "./mobileFilter.module.scss";
+import * as styles from "./mobileFilter.module.scss";
 
 const MobileFilter = ({ tags, toggleTag }) => {
   return (

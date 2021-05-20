@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import styles from "./desktopIndexFilter.module.scss";
+import * as styles from "./desktopIndexFilter.module.scss";
 
 const DesktopIndexFilter = ({ tags, toggleTag }) => {
   return (

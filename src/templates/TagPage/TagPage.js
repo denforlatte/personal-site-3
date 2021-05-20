@@ -1,9 +1,10 @@
 import React from "react";
+import { graphql } from 'gatsby';
 import PropTypes from "prop-types";
 
 import Header from "../../components/Header";
 import IndexCard from "../../components/IndexCard";
-import styles from './tagPage.module.scss';
+import * as styles from './tagPage.module.scss';
 
 const TagPage = ({ data, location, pageContext }) => {
   // Add path to nodes

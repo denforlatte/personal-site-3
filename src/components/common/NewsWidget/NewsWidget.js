@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby'
 
-import styles from './newsWidget.module.scss';
+import * as styles from './newsWidget.module.scss';
 
 const NewsWidget = () => {
   return (

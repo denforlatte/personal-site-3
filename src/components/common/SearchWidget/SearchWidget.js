@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { navigate } from "gatsby";
 
-import styles from './searchWidget.module.scss';
+import * as styles from './searchWidget.module.scss';
 
 const SearchWidget = () => {
   const [query, setQuery] = useState("");

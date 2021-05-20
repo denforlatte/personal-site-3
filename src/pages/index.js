@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import SEO from "../components/seo";
+import Seo from "../components/Seo";
 import LandingPage from "../templates/LandingPage";
 
-import styles from "../templates/LandingPage/landingPage.module.scss";
+import * as styles from "../templates/LandingPage/landingPage.module.scss";
 
 const Index = ({ location }) => {
   return (
     <>
-      <SEO title="Home" />
+      <Seo title="Home" />
       <LandingPage location={location}>
         <h2>Welcome</h2>
         <p>Hey, welcome to my site.</p>

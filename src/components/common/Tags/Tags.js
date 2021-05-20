@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from 'gatsby';
 
-import styles from './tags.module.scss';
+import * as styles from './tags.module.scss';
 
 const Tags = ({tags, className}) => {
   return (

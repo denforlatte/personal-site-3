@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import SEO from "../components/seo";
+import Seo from "../components/Seo";
 import LandingPage from "../templates/LandingPage";
 
-import styles from "../templates/LandingPage/landingPage.module.scss";
+import * as styles from "../templates/LandingPage/landingPage.module.scss";
 
 const ContactPage = ({ location }) => {
   const [name, setName] = useState(null);
@@ -28,7 +28,7 @@ const ContactPage = ({ location }) => {
 
   return (
     <>
-      <SEO title="Contact" />
+      <Seo title="Contact" />
       <LandingPage location={location}>
         <h2>Say hello</h2>
         <form

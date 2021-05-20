@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql, Link } from "gatsby";
-import styles from "./postPage.module.scss";
+import * as styles from "./postPage.module.scss";
 import { parseComponent } from "../../utilities";
 
 import Header from "../../components/Header";
 import MobileVegvisir from "../../components/MobileVegvisir";
-import SEO from "../../components/seo";
+import Seo from "../../components/Seo";
 import IndexDate from "../../components/IndexDate";
 import Tags from "../../components/common/Tags";
 import ShareWidget from "../../components/common/ShareWidget";
@@ -31,7 +31,7 @@ const PostPage = ({ data, location, pageContext }) => {
 
   return (
     <>
-      <SEO title={post.title} />
+      <Seo title={post.title} />
       <Header location={location} />
       <MobileVegvisir />
       <main className={styles.outerContainer}>

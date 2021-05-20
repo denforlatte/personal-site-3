@@ -2,14 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
-import SEO from "../components/seo";
+import Seo from "../components/Seo";
 import IndexPage from '../templates/IndexPage';
 
 const blog = ({ data, location }) => {
 
   return (
     <>
-      <SEO title="Blog" />
+      <Seo title="Blog" />
       <IndexPage location={location} nodes={data.allStrapiBlogPost.nodes} />
     </>
   );

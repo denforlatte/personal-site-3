@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./aboutWidget.module.scss";
+import * as styles from "./aboutWidget.module.scss";
 
 const AboutWidget = props => {
   return (
