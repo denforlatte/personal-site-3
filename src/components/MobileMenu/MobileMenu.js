@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
-import * as styles from "./mobileMenu.module.scss";
+import styles from "./mobileMenu.module.scss";
 
 const MobileMenu = ({ links, location }) => {
   const generateNavLinks = () =>

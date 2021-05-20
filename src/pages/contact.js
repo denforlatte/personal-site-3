@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Seo from "../components/Seo";
 import LandingPage from "../templates/LandingPage";
 
-import * as styles from "../templates/LandingPage/landingPage.module.scss";
+import styles from "../templates/LandingPage/landingPage.module.scss";
 
 const ContactPage = ({ location }) => {
   const [name, setName] = useState(null);

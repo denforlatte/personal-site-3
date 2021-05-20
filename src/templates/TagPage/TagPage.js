@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import Header from "../../components/Header";
 import IndexCard from "../../components/IndexCard";
-import * as styles from './tagPage.module.scss';
+import styles from './tagPage.module.scss';
 
 const TagPage = ({ data, location, pageContext }) => {
   // Add path to nodes

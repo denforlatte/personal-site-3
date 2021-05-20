@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import * as styles from "./mobileNav.module.scss";
+import styles from "./mobileNav.module.scss";
 
 const MobileNav = ({ toggleMenuOpen, toggleFilterOpen, showFilter }) => {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import * as styles from "./shareWidget.module.scss";
+import styles from "./shareWidget.module.scss";
 
 const ShareWidget = ({ pageUrl, pageTitle }) => {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql, Link } from "gatsby";
-import * as styles from "./postPage.module.scss";
+import styles from "./postPage.module.scss";
 import { parseComponent } from "../../utilities";
 
 import Header from "../../components/Header";

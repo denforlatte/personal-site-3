@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import Seo from "../components/Seo";
 import LandingPage from "../templates/LandingPage";
 
-import * as styles from "../templates/LandingPage/landingPage.module.scss";
+import styles from "../templates/LandingPage/landingPage.module.scss";
 
 const Index = ({ location }) => {
   return (

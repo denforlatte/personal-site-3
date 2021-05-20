@@ -1,4 +1,4 @@
-require('dotenv').config()
+require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
@@ -17,23 +17,29 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sass`,
       options: {
-        implementation: require("node-sass"),
+        cssLoaderOptions: {
+          esModule: false,
+          modules: {
+            namedExport: false,
+          },
+        },
       },
     },
     {
-      resolve: 'gatsby-source-strapi',
+      resolve: "gatsby-source-strapi",
       options: {
         apiURL: process.env.STRAPI_HOST,
         // hacky AF way to add a query to all Strapi requests...
-        queryLimit: process.env.NODE_ENV === "development" ? 1000 : '1000&is_published=true',
+        queryLimit:
+          process.env.NODE_ENV === "development"
+            ? 1000
+            : "1000&is_published=true",
         contentTypes: [
           // List of the Content Types you want to be able to request from Gatsby.
-          'blog-post',
-          'project',
+          "blog-post",
+          "project",
         ],
-        singleTypes: [
-          'about'
-        ],
+        singleTypes: ["about"],
         // Possibility to login with a strapi user, when content types are not publically available (optional).
         loginData: {
           identifier: process.env.STRAPI_USERNAME, // Username in Strapi
@@ -57,7 +63,7 @@ module.exports = {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
       options: {
         // Fields to index
-        // TODO do I want to add a search of the body? 
+        // TODO do I want to add a search of the body?
         fields: [`title`, `summary`],
         resolvers: {
           StrapiProject: {
@@ -75,11 +81,11 @@ module.exports = {
             thumbnail: node => node.thumbnail,
             tags: node => node.tags,
             published_date: node => node.published_date,
-          }
+          },
         },
         // Optional filter to limit indexed nodes
         // filter: (node, getNode) => node.frontmatter.tags !== "exempt",
       },
     },
   ],
-}
+};

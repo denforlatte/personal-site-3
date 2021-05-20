@@ -2,7 +2,7 @@ import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 
-import * as styles from './featuredPage.module.scss';
+import styles from './featuredPage.module.scss';
 
 const FeaturedPageWidget = () => {
   const data = useStaticQuery(query);

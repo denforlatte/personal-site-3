@@ -2,7 +2,7 @@ import React from "react";
 import Img from "gatsby-image";
 import { useStaticQuery, graphql } from "gatsby";
 
-import * as styles from "./mobileVegvisir.module.scss";
+import styles from "./mobileVegvisir.module.scss";
 
 const MobileVegvisir = () => {
   const data = useStaticQuery(queryVegvisir);

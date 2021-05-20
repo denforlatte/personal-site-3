@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import * as styles from "./indexDate.module.scss";
+import styles from "./indexDate.module.scss";
 
 const IndexDate = ({ date, className }) => (
   <div className={styles.date + (className ? ' ' + className : '')}>
