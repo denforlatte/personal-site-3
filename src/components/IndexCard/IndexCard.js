@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import styles from "./indexCard.module.scss";
 
@@ -22,10 +22,9 @@ const IndexCard = ({
     }
     if (thumbnail.localFile) {
       return (
-        <Img
-          fluid={thumbnail.localFile.childImageSharp.fluid}
-          alt={thumbnail.alternativeText}
-        />
+        <GatsbyImage
+          image={thumbnail.localFile.childImageSharp.gatsbyImageData}
+          alt={thumbnail.alternativeText} />
       );
     }
     if (!thumbnail.localFile) { // Indicates this is from the search index

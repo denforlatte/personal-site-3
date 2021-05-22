@@ -19,31 +19,28 @@ projects.propTypes = {
   location: PropTypes.object.isRequired,
 };
 
-export const projectsQuery = graphql`
-  query {
-    allStrapiProject(sort: { fields: published_date, order: ASC }) {
-      nodes {
-        published_date
+export const projectsQuery = graphql`{
+  allStrapiProject(sort: {fields: published_date, order: ASC}) {
+    nodes {
+      published_date
+      slug
+      summary
+      title
+      tags {
+        name
         slug
-        summary
-        title
-        tags {
-          name
-          slug
-        }
-        thumbnail {
-          alternativeText
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 400, maxHeight: 300) {
-                ...GatsbyImageSharpFluid
-              }
-            }
+      }
+      thumbnail {
+        alternativeText
+        localFile {
+          childImageSharp {
+            gatsbyImageData(width: 600, layout: FULL_WIDTH, aspectRatio: 1.33)
           }
         }
       }
     }
   }
+}
 `;
 
 export default projects;

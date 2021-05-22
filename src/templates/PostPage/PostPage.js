@@ -118,65 +118,61 @@ PostPage.propTypes = {
   pageContext: PropTypes.object.isRequired,
 };
 
-export const query = graphql`
-  query postById($id: String!) {
-    strapiBlogPost(id: { eq: $id }) {
-      title
+export const query = graphql`query postById($id: String!) {
+  strapiBlogPost(id: {eq: $id}) {
+    title
+    slug
+    published_date
+    updatedAt
+    meta_description
+    tags {
+      name
       slug
-      published_date
-      updatedAt
-      meta_description
-      tags {
-        name
-        slug
-      }
-      body {
-        id
-        strapi_component
+    }
+    body {
+      id
+      strapi_component
+      text
+      page {
         text
-        page {
-          text
-        }
       }
     }
-
-    strapiProject(id: { eq: $id }) {
-      title
+  }
+  strapiProject(id: {eq: $id}) {
+    title
+    slug
+    published_date
+    updatedAt
+    meta_description
+    tags {
+      name
       slug
-      published_date
-      updatedAt
-      meta_description
-      tags {
-        name
-        slug
-      }
-      body {
-        id
-        strapi_component
+    }
+    body {
+      id
+      strapi_component
+      text
+      page {
         text
-        page {
-          text
-          title
-        }
+        title
+      }
+      image {
+        title
         image {
-          title
-          image {
-            id
-            name
-            alternativeText
-            caption
-            localFile {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
-                }
-              }
+          id
+          name
+          alternativeText
+          caption
+          localFile {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
         }
       }
     }
   }
+}
 `;
 
 export default PostPage;

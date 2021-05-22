@@ -14,6 +14,7 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-plugin-sass`,
       options: {

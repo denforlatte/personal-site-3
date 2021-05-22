@@ -1,6 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import styles from './featuredPage.module.scss';
 
@@ -11,11 +11,10 @@ const FeaturedPageWidget = () => {
     <div>
       <h4>Featured Page</h4>
       <Link to='/blog/welcome-to-my-website'>
-        <Img
-          fluid={data.file.childImageSharp.fluid}
+        <GatsbyImage
+          image={data.file.childImageSharp.gatsbyImageData}
           alt={"Probably unrelated Celtic doodle default image"}
-          className={styles.image}
-        />
+          className={styles.image} />
       </Link>
       
       <Link to='/blog/welcome-to-my-website'>
@@ -30,16 +29,13 @@ const FeaturedPageWidget = () => {
   );
 };
 
-const query = graphql`
-  query {
-    file(relativePath: { eq: "doodlysketch.jpg" }) {
-      childImageSharp {
-        fluid(quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+const query = graphql`{
+  file(relativePath: {eq: "doodlysketch.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
     }
   }
+}
 `;
 
 export default FeaturedPageWidget;
