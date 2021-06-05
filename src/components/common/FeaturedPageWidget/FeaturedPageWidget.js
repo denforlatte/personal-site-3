@@ -12,7 +12,7 @@ const FeaturedPageWidget = () => {
       <h4>Featured Page</h4>
       <Link to='/blog/welcome-to-my-website'>
         <Img
-          fluid={data.file.childImageSharp.fluid}
+          fluid={data.strapiBlogPost.thumbnail.localFile.childImageSharp.fluid}
           alt={"Probably unrelated Celtic doodle default image"}
           className={styles.image}
         />
@@ -32,10 +32,14 @@ const FeaturedPageWidget = () => {
 
 const query = graphql`
   query {
-    file(relativePath: { eq: "doodlysketch.jpg" }) {
-      childImageSharp {
-        fluid(quality: 100) {
-          ...GatsbyImageSharpFluid
+    strapiBlogPost(slug: {eq: "welcome-to-my-website"}) {
+      thumbnail {
+        localFile {
+          childImageSharp {
+            fluid(quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
         }
       }
     }
