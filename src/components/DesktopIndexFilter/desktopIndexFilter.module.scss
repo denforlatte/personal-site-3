@@ -12,6 +12,10 @@
     margin-right: 8px;
     margin-left: 8px;
   }
+
+  @media screen and (max-width: $breakpoint) {
+    display: none;
+  }
 }
 
 .tag {
