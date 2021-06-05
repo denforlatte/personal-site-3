@@ -5,10 +5,12 @@ import { Link } from "gatsby";
 import styles from "./mobileMenu.module.scss";
 
 const MobileMenu = ({ links, location }) => {
-  const generateNavLinks = () =>
-    links.map(link => {
+  const generateNavLinks = () => {
+    const currentLocation = "/" + location.pathname.split("/")[1];
+
+    return links.map(link => {
       const url = link === "Home" ? "/" : "/" + link.toLowerCase();
-      const isActive = location.pathname === url;
+      const isActive = url === currentLocation;
       const className = isActive
         ? styles.navLink + " " + styles.navLinkActive
         : styles.navLink;
@@ -21,6 +23,7 @@ const MobileMenu = ({ links, location }) => {
         </li>
       );
     });
+  };
 
   return (
     <nav className={styles.overlay}>
