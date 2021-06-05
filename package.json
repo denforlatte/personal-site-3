@@ -1,11 +1,20 @@
 {
   "name": "personal-site-3",
   "private": true,
-  "description": "",
-  "version": "0.1.0",
+  "description": "A personal website to share whatever I feel like sharing.",
+  "version": "1.0.0",
   "author": "Danny Thorbjørn Wilkins",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://www.dannywilkins.me/contact"
+  },
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
     "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^2.4.2",
@@ -31,20 +40,10 @@
   },
   "homepage": "https://dannywilkins.me",
   "keywords": [
-    "gatsby"
+    "gatsby, personal site, portfolio, blog"
   ],
-  "license": "",
   "repository": {
     "type": "git",
     "url": "https://github.com/denforlatte/personal-site-3"
-  },
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   }
 }
