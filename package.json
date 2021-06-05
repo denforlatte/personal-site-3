@@ -36,6 +36,7 @@
     "react-unity-webgl": "^8.0.2"
   },
   "devDependencies": {
+    "@netlify/plugin-lighthouse": "^2.1.0",
     "prettier": "2.2.1"
   },
   "homepage": "https://dannywilkins.me",
