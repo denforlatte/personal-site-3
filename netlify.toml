@@ -26,3 +26,7 @@
   # TODO move to all once tested
   [[plugins]]
     package = "netlify-plugin-subfont"
+
+  # TODO move to all once tested
+  [[plugins]]
+    package = "netlify-plugin-checklinks"
