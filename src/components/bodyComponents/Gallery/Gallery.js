@@ -2,26 +2,31 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Img from "gatsby-image";
 
+import { parseUrlQuery } from '../../../utilities';
+
 import styles from "./gallery.module.scss";
 
 /* eslint-disable */
-// TODO refactor this.
+// TODO rewrite this bollocks
+// TODO refactor this navigation to a util
 // TODO only disable ESLINT for the focus mode
-const Gallery = ({ component }) => {
+const Gallery = ({ component, location }) => {
   const [activeImage, setActiveImage] = useState(null);
+
+  // TODO can I key this to the gallery?
+  useEffect(() => {
+    const jumpToImage = Number(parseUrlQuery(location.search).image - 1);
+    if (jumpToImage) {
+      setActiveImage(jumpToImage);
+    }
+  }, [location.search]);
 
   const keyboardInputHandler = e => {
     if (e.key === "ArrowLeft") {
-      setActiveImage(i => {
-        if (i === null) return null;
-        return i <= 0 ? component.image.length - 1 : i - 1;
-      });
+      navigateLeft();
     }
     if (e.key === "ArrowRight") {
-      setActiveImage(i => {
-        if (i === null) return null;
-        return i >= component.image.length - 1 ? 0 : i + 1;
-      });
+      navigateRight();
     }
   };
 
@@ -34,15 +39,27 @@ const Gallery = ({ component }) => {
 
   const navigateLeft = () => {
     if (activeImage !== null) {
-      setActiveImage(i => (i <= 0 ? component.image.length - 1 : i - 1));
+      const newPos = activeImage <= 0 ? component.image.length - 1 : activeImage - 1;
+      setFocus(newPos);
     }
   };
 
   const navigateRight = () => {
     if (activeImage !== null) {
-      setActiveImage(i => (i >= component.image.length - 1 ? 0 : i + 1));
+      const newPos = activeImage >= component.image.length - 1 ? 0 : activeImage + 1;
+      setFocus(newPos);
     }
   };
+
+  const setFocus = (target) => {
+    window.history.pushState({}, '', location.pathname + '?image=' + (target + 1));
+    setActiveImage(target);
+  }
+
+  const closeFocus = () => {
+    window.history.pushState({}, '', location.pathname);
+    setActiveImage(null);
+  }
 
   return (
     <div className={styles.container}>
@@ -50,7 +67,7 @@ const Gallery = ({ component }) => {
         <div key={image.image.id}>
           <div
             className={styles.imageWrapper}
-            onClick={() => setActiveImage(i)}
+            onClick={() => setFocus(i)}
           >
             <Img
               fluid={image.image.localFile.childImageSharp.fluid}
@@ -64,7 +81,7 @@ const Gallery = ({ component }) => {
         <>
           <div
             className={styles.imageFocusBackground}
-            onClick={() => setActiveImage(null)}
+            onClick={() => closeFocus()}
           >
             <div className={styles.closeButton}>Close [x]</div>
           </div>
@@ -99,6 +116,7 @@ const Gallery = ({ component }) => {
 
 Gallery.propTypes = {
   component: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default Gallery;

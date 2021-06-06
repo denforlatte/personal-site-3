@@ -13,8 +13,7 @@ const Pagination = ({component, location}) => {
     const jumpToPage = Number(parseUrlQuery(location.search).page - 1);
     if (jumpToPage) {
       setCurrentPage(jumpToPage);
-    }
-    
+    }    
   }, [location.search]);
 
   const switchToPage = targetPage => {

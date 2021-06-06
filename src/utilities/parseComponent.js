@@ -8,7 +8,7 @@ const parseComponent = (component, location) => {
     case "body-components.prose-text":
       return <ProseText key={component.id} component={component} />
     case "body-components.gallery":
-      return <Gallery  key={component.id} component={component} />
+      return <Gallery  key={component.id} component={component} location={location}/>
     case "body-components.pagination":
       return <Pagination key={component.id} component={component} location={location}/>
     default:
