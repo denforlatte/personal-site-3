@@ -1,3 +1,6 @@
+[build]
+  publish = "public"
+
 [context.branch-deploy.environment]
   NODE_ENV = "development"
 
@@ -16,5 +19,10 @@
     [plugins.inputs]
       output_path = "reports/lighthouse.html"
 
+  # TODO move to all once tested
+  [[plugins]]
+    package = "netlify-plugin-gatsby-cache"
+
+  # TODO move to all once tested
   [[plugins]]
     package = "netlify-plugin-subfont"
