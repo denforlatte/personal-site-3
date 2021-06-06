@@ -28,5 +28,6 @@
     package = "netlify-plugin-subfont"
 
   # TODO move to all once tested
-  [[plugins]]
-    package = "netlify-plugin-checklinks"
+  # Fails looking for sw.js. Retry after migration. Maybe with pwa gatsby plugin
+  # [[plugins]]
+  #   package = "netlify-plugin-checklinks"
