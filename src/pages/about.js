@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 
-import SEO from "../components/seo";
+import Seo from "../components/Seo";
 import LandingPage from "../templates/LandingPage";
 
 import {richTextToPTags} from '../utilities';
@@ -10,7 +10,7 @@ import {richTextToPTags} from '../utilities';
 const about = ({ data, location }) => {
   return (
     <>
-      <SEO title="About" />
+      <Seo title="About" />
       <LandingPage location={location}>
         {richTextToPTags(data.strapiAbout.body)}
       </LandingPage>

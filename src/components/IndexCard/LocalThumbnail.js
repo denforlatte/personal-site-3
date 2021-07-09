@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 
 // TODO test. Does this load ALLLL the possible images in the browser?
 const LocalThumbnail = ({thumbnail, className}) => {
@@ -9,7 +9,11 @@ const LocalThumbnail = ({thumbnail, className}) => {
 
   const i = data.allFile.nodes.findIndex(node => node.id === thumbnail.localFile___NODE);
 
-  return <Img fluid={data.allFile.nodes[i].childImageSharp.fluid} className={className} />;
+  return (
+    <GatsbyImage
+      image={data.allFile.nodes[i].childImageSharp.gatsbyImageData}
+      className={className} />
+  );
 }
 
 LocalThumbnail.propTypes = {
@@ -17,21 +21,18 @@ LocalThumbnail.propTypes = {
   className: PropTypes.string,
 }
 
-const query = graphql`
-  query {
-    allFile {
-      nodes {
-        id
-        url
-        publicURL
-        childImageSharp {
-          fluid(maxWidth: 400, maxHeight: 300) {
-            ...GatsbyImageSharpFluid
-          }
-        }
+const query = graphql`{
+  allFile {
+    nodes {
+      id
+      url
+      publicURL
+      childImageSharp {
+        gatsbyImageData(width: 600, layout: FULL_WIDTH, aspectRatio: 1.33)
       }
     }
   }
+}
 `;
 
 export default LocalThumbnail;

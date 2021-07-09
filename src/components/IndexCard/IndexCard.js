@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import styles from "./indexCard.module.scss";
 
@@ -18,19 +18,17 @@ const IndexCard = ({
 
   const displayThumbnail = () => {
     if (!thumbnail) {
-      return <DefaultImage className={styles.image} />;
+      return <DefaultImage />;
     }
     if (thumbnail.localFile) {
       return (
-        <Img
-          fluid={thumbnail.localFile.childImageSharp.fluid}
-          alt={thumbnail.alternativeText}
-          className={styles.image}
-        />
+        <GatsbyImage
+          image={thumbnail.localFile.childImageSharp.gatsbyImageData}
+          alt={thumbnail.alternativeText} />
       );
     }
     if (!thumbnail.localFile) { // Indicates this is from the search index
-      return <LocalThumbnail thumbnail={thumbnail} className={styles.image} />;
+      return <LocalThumbnail thumbnail={thumbnail} />;
     }
   };
 

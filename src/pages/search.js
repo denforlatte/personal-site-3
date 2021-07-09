@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
+import { graphql } from 'gatsby';
 import { Index } from "elasticlunr";
 import { parseUrlQuery } from "../utilities";
 
-import SEO from "../components/seo";
+import Seo from "../components/Seo";
 import Header from "../components/Header";
 import IndexCard from "../components/IndexCard";
 import DesktopIndexFilter from "../components/DesktopIndexFilter";
@@ -76,7 +77,7 @@ const SearchPage = ({ data, location }) => {
   // TODO refact search filters and input?
   return (
     <>
-      <SEO title="Search" />
+      <Seo title="Search" />
       <Header location={location} />
       <main style={{ marginBottom: "50px" }}>
         <div className="searchFiltersContainer">

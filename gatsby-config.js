@@ -1,4 +1,10 @@
-require('dotenv').config()
+require("dotenv").config();
+
+// We want to get the unpublished blogs if we're in dev mode
+const query = process.env.NODE_ENV === "development" ? {} : ({
+  _sort: 'published_date:desc',
+  is_published: 'true',
+})
 
 module.exports = {
   siteMetadata: {
@@ -14,27 +20,38 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-plugin-sass`,
       options: {
-        implementation: require("node-sass"),
+        cssLoaderOptions: {
+          esModule: false,
+          modules: {
+            namedExport: false,
+          },
+        },
       },
     },
     {
-      resolve: 'gatsby-source-strapi',
+      resolve: "gatsby-source-strapi",
       options: {
         apiURL: process.env.STRAPI_HOST,
-        // hacky AF way to add a query to all Strapi requests...
-        queryLimit: process.env.NODE_ENV === "development" ? 1000 : '1000&is_published=true',
-        contentTypes: [
+        queryLimit: 1000,
+        collectionTypes: [
           // List of the Content Types you want to be able to request from Gatsby.
-          'blog-post',
-          'project',
+          {
+            name: 'blog-post',
+            api: {
+              qs: query
+            }
+          },        {
+            name: 'project',
+            api: {
+              qs: query
+            }
+          }
         ],
-        singleTypes: [
-          'about'
-        ],
-        // Possibility to login with a strapi user, when content types are not publically available (optional).
+        singleTypes: ["about"],
         loginData: {
           identifier: process.env.STRAPI_USERNAME, // Username in Strapi
           password: process.env.STRAPI_PASSWORD,
@@ -57,7 +74,7 @@ module.exports = {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
       options: {
         // Fields to index
-        // TODO do I want to add a search of the body? 
+        // TODO do I want to add a search of the body?
         fields: [`title`, `summary`],
         resolvers: {
           StrapiProject: {
@@ -75,11 +92,11 @@ module.exports = {
             thumbnail: node => node.thumbnail,
             tags: node => node.tags,
             published_date: node => node.published_date,
-          }
+          },
         },
         // Optional filter to limit indexed nodes
         // filter: (node, getNode) => node.frontmatter.tags !== "exempt",
       },
     },
   ],
-}
+};

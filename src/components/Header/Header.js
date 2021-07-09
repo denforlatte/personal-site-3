@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { graphql, Link, useStaticQuery } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import styles from "./header.module.scss";
 
 import SocialLinks from "./SocialLinks";
@@ -38,7 +38,10 @@ const Header = ({ location, tags, toggleTag }) => {
   return (
     <header className={styles.header}>
       <div className={styles.banner}>
-        <Img className={styles.logo} fluid={data.file.childImageSharp.fluid} loading={'lazy'} />
+        <GatsbyImage
+          image={data.file.childImageSharp.gatsbyImageData}
+          className={styles.logo}
+          loading={'lazy'} />
         <div className={styles.primaryContainer}>
           <h1 className={styles.title}>Danny Thorbjørn Wilkins</h1>
           <p className={styles.tagline}>
@@ -65,16 +68,13 @@ Header.propTypes = {
   toggleTag: PropTypes.func,
 };
 
-const query = graphql`
-  query {
-    file(relativePath: { eq: "vegvisir.png" }) {
-      childImageSharp {
-        fluid(quality: 100) {
-          ...GatsbyImageSharpFluid_noBase64
-        }
-      }
+const query = graphql`{
+  file(relativePath: {eq: "vegvisir.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, placeholder: NONE, layout: FULL_WIDTH)
     }
   }
+}
 `;
 
 export default Header;

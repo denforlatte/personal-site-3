@@ -17,28 +17,28 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^2.4.2",
-    "gatsby": "^2.26.1",
-    "gatsby-image": "^2.5.0",
-    "gatsby-plugin-catch-links": "^2.7.0",
-    "gatsby-plugin-feed": "^2.7.0",
-    "gatsby-plugin-react-helmet": "^3.4.0",
-    "gatsby-plugin-sass": "^2.8.0",
-    "gatsby-plugin-sharp": "^2.8.0",
-    "gatsby-source-filesystem": "^2.5.0",
-    "gatsby-source-strapi": "^1.0.0-alpha.0",
-    "gatsby-transformer-sharp": "^2.6.0",
-    "node-sass": "^4.14.1",
-    "prismjs": "^1.22.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1",
-    "react-unity-webgl": "^8.0.2"
+    "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^3.0.2",
+    "gatsby": "^3.8.1",
+    "gatsby-plugin-catch-links": "^3.8.0",
+    "gatsby-plugin-feed": "^3.8.0",
+    "gatsby-plugin-image": "^1.8.0",
+    "gatsby-plugin-react-helmet": "^4.8.0",
+    "gatsby-plugin-sass": "^4.8.0",
+    "gatsby-plugin-sharp": "^3.8.0",
+    "gatsby-source-filesystem": "^3.8.0",
+    "gatsby-source-strapi": "^1.0.2",
+    "gatsby-transformer-sharp": "^3.8.0",
+    "node-sass": "^6.0.1",
+    "prismjs": "^1.24.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-unity-webgl": "^8.4.3"
   },
   "devDependencies": {
     "@netlify/plugin-lighthouse": "^2.1.0",
     "netlify-plugin-subfont": "^6.0.0",
-    "prettier": "2.2.1"
+    "prettier": "^2.3.2"
   },
   "homepage": "https://dannywilkins.me",
   "keywords": [

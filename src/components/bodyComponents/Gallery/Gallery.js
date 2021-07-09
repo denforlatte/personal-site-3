@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import { parseUrlQuery } from '../../../utilities';
 
@@ -69,10 +69,9 @@ const Gallery = ({ component, location }) => {
             className={styles.imageWrapper}
             onClick={() => setFocus(i)}
           >
-            <Img
-              fluid={image.image.localFile.childImageSharp.fluid}
-              alt={image.image.alternativeText}
-            />
+            <GatsbyImage
+              image={image.image.localFile.childImageSharp.gatsbyImageData}
+              alt={image.image.alternativeText} />
           </div>
           {image.title && <h3 className={styles.imageTitle}>{image.title}</h3>}
         </div>
@@ -91,12 +90,8 @@ const Gallery = ({ component, location }) => {
             </div>
             <div className={styles.imageFocus}>
               <div onClick={() => navigateRight()}>
-                <Img
-                  fluid={
-                    component.image[activeImage].image.localFile.childImageSharp
-                      .fluid
-                  }
-                />
+                <GatsbyImage
+                  image={component.image[activeImage].image.localFile.childImageSharp.gatsbyImageData} />
                 {component.image[activeImage].title && (
                   <h3 className={styles.imageTitleFocus}>
                     {component.image[activeImage].title}

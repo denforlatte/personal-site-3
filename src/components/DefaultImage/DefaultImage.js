@@ -1,29 +1,25 @@
 import React from "react";
 import { useStaticQuery, graphql } from 'gatsby';
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const DefaultImage = ({ className }) => {
   const data = useStaticQuery(query);
 
   return (
-    <Img
-      fluid={data.file.childImageSharp.fluid}
+    <GatsbyImage
+      image={data.file.childImageSharp.gatsbyImageData}
       alt={"Probably unrelated Celtic doodle default image"}
-      className={className}
-    />
+      className={className} />
   );
 };
 
-const query = graphql`
-  query {
-    file(relativePath: { eq: "doodlysketch.jpg" }) {
-      childImageSharp {
-        fluid(quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+const query = graphql`{
+  file(relativePath: {eq: "doodlysketch.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
     }
   }
+}
 `;
 
 export default DefaultImage;

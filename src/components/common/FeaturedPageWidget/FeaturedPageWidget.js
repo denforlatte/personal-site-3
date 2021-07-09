@@ -1,6 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import styles from './featuredPage.module.scss';
 
@@ -11,11 +11,10 @@ const FeaturedPageWidget = () => {
     <div>
       <h4>Featured Page</h4>
       <Link to='/blog/welcome-to-my-website'>
-        <Img
-          fluid={data.strapiBlogPost.thumbnail.localFile.childImageSharp.fluid}
+        <GatsbyImage
+          image={data.strapiBlogPost.thumbnail.localFile.childImageSharp.fluid}
           alt={"Probably unrelated Celtic doodle default image"}
-          className={styles.image}
-        />
+          className={styles.image} />
       </Link>
       
       <Link to='/blog/welcome-to-my-website'>

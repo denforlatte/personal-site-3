@@ -210,3 +210,18 @@ exports.createSchemaCustomization = ({ actions }) => {
   }
   `);
 };
+
+// This hides the frustrating css import order warning that isn't really relevant.
+// See https://github.com/facebook/create-react-app/issues/5372#issuecomment-685932009
+exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
+  if (stage === 'develop' || stage === 'build-javascript') {
+    const config = getConfig()
+    const miniCssExtractPlugin = config.plugins.find(
+      plugin => plugin.constructor.name === 'MiniCssExtractPlugin'
+    )
+    if (miniCssExtractPlugin) {
+      miniCssExtractPlugin.options.ignoreOrder = true
+    }
+    actions.replaceWebpackConfig(config)
+  }
+};
