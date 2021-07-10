@@ -20,7 +20,6 @@ module.exports = {
     },
   },
   plugins: [
-    `gatsby-plugin-image`,
     {
       resolve: `gatsby-plugin-sass`,
       options: {
@@ -70,6 +69,7 @@ module.exports = {
     //`gatsby-plugin-feed`, for an RSS feed. May need to re-add markdown remark
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
+    `gatsby-plugin-image`,
     {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
       options: {

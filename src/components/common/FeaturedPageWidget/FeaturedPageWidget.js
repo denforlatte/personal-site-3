@@ -35,9 +35,7 @@ const query = graphql`
       thumbnail {
         localFile {
           childImageSharp {
-            fluid(quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
       }
