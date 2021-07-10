@@ -12,8 +12,8 @@ const FeaturedPageWidget = () => {
       <h4>Featured Page</h4>
       <Link to='/blog/welcome-to-my-website'>
         <GatsbyImage
-          image={data.strapiBlogPost.thumbnail.localFile.childImageSharp.fluid}
-          alt={"Probably unrelated Celtic doodle default image"}
+          image={data.strapiBlogPost.thumbnail.localFile.childImageSharp.gatsbyImageData}
+          alt={"Vegvisir"}
           className={styles.image} />
       </Link>
       
