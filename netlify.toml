@@ -1,6 +1,14 @@
 [build]
   publish = "public"
 
+# TODO check runs on master.
+[[plugins]]
+  package = "netlify-plugin-gatsby-cache"
+
+# TODO check runs on master.
+[[plugins]]
+  package = "netlify-plugin-subfont"
+
 [context.branch-deploy.environment]
   NODE_ENV = "development"
 
@@ -19,13 +27,7 @@
     [plugins.inputs]
       output_path = "reports/lighthouse.html"
 
-  # TODO move to all once tested
-  [[plugins]]
-    package = "netlify-plugin-gatsby-cache"
 
-  # TODO move to all once tested
-  [[plugins]]
-    package = "netlify-plugin-subfont"
 
   # TODO move to all once tested
   # Fails looking for sw.js. Retry after migration. Maybe with pwa gatsby plugin
