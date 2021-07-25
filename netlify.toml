@@ -1,30 +1,29 @@
 [build]
   publish = "public"
 
-[context.develop.plugins]
-  # TODO check runs on master.
-  [[plugins]]
-    package = "netlify-plugin-gatsby-cache"
+# TODO check runs on master.
+[[plugins]]
+  package = "netlify-plugin-gatsby-cache"
 
-  # TODO check runs on master.
-  [[plugins]]
-    package = "netlify-plugin-subfont"
-    
-  [[plugins]]
-    package = "@netlify/plugin-lighthouse"
+# TODO check runs on master.
+[[plugins]]
+  package = "netlify-plugin-subfont"
+  
+[[context.develop.plugins]]
+  package = "@netlify/plugin-lighthouse"
 
-    # optional, fails build when a category is below a threshold
-    [plugins.inputs.thresholds]
-      performance = 0.9
-      accessibility = 0.9
-      best-practices = 0.9
-      seo = 0.9
+  # optional, fails build when a category is below a threshold
+  [plugins.inputs.thresholds]
+    performance = 0.9
+    accessibility = 0.9
+    best-practices = 0.9
+    seo = 0.9
 
-    # optional, deploy the lighthouse report to a path under your site
-    [plugins.inputs]
-      output_path = "reports/lighthouse.html"
+  # optional, deploy the lighthouse report to a path under your site
+  [plugins.inputs]
+    output_path = "reports/lighthouse.html"
 
-  # TODO move to all once tested
-  # Fails looking for sw.js. Retry after migration. Maybe with pwa gatsby plugin
-  # [[plugins]]
-  #   package = "netlify-plugin-checklinks"
+# TODO move to all once tested
+# Fails looking for sw.js. Retry after migration. Maybe with pwa gatsby plugin
+# [[plugins]]
+#   package = "netlify-plugin-checklinks"
