@@ -9,9 +9,7 @@
 [[plugins]]
   package = "netlify-plugin-subfont"
 
-[context.branch-deploy.environment]
-  NODE_ENV = "development"
-
+[context.develop]
   [[plugins]]
     package = "@netlify/plugin-lighthouse"
 
@@ -26,8 +24,6 @@
     # optional, deploy the lighthouse report to a path under your site
     [plugins.inputs]
       output_path = "reports/lighthouse.html"
-
-
 
   # TODO move to all once tested
   # Fails looking for sw.js. Retry after migration. Maybe with pwa gatsby plugin
