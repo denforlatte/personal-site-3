@@ -19,6 +19,9 @@
     best-practices = 0.9
     seo = 0.9
 
+[[context.develop.plugins]]
+  package = "@netlify/plugin-lighthouse"
+
   # optional, deploy the lighthouse report to a path under your site
   [context.develop.plugins.inputs]
     output_path = "reports/lighthouse.html"
