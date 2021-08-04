@@ -134,6 +134,7 @@ export const query = graphql`query postById($id: String!) {
       strapi_component
       text
       page {
+        title
         text
       }
     }
