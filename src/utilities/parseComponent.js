@@ -1,5 +1,11 @@
 import React from 'react';
-import { RichText, Pagination, Gallery, ProseText } from '../components/bodyComponents';
+import {
+  Gallery,
+  Image,
+  Pagination,
+  ProseText,
+  RichText,
+} from "../components/bodyComponents";
 
 const parseComponent = (component, location) => {
   switch (component.strapi_component) {
@@ -11,6 +17,8 @@ const parseComponent = (component, location) => {
       return <Gallery  key={component.id} component={component} location={location}/>
     case "body-components.pagination":
       return <Pagination key={component.id} component={component} location={location}/>
+    case "body-components.image":
+      return <Image key={component.id} component={component} />
     default:
       console.error(`No React component found for Strapi component: ${component.strapi_component}`);
       return null;

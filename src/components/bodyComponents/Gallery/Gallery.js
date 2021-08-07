@@ -63,17 +63,17 @@ const Gallery = ({ component, location }) => {
 
   return (
     <div className={styles.container}>
-      {component.galleryImage.map((image, i) => (
-        <div key={image.image.id}>
+      {component.galleryImage.map((galleryImage, i) => (
+        <div key={galleryImage.image.id}>
           <div
             className={styles.imageWrapper}
             onClick={() => setFocus(i)}
           >
             <GatsbyImage
-              image={image.image.localFile.childImageSharp.gatsbyImageData}
-              alt={image.image.alternativeText} />
+              image={galleryImage.image.localFile.childImageSharp.gatsbyImageData}
+              alt={galleryImage.image.alternativeText} />
           </div>
-          {image.title && <h3 className={styles.imageTitle}>{image.title}</h3>}
+          {galleryImage.title && <h3 className={styles.imageTitle}>{galleryImage.title}</h3>}
         </div>
       ))}
       {activeImage !== null && (
