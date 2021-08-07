@@ -137,6 +137,17 @@ export const query = graphql`query postById($id: String!) {
         title
         text
       }
+      image {
+        id
+        name
+        alternativeText
+        caption
+        localFile {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH)
+          }
+        }
+      }
     }
   }
   strapiProject(id: {eq: $id}) {
@@ -157,7 +168,7 @@ export const query = graphql`query postById($id: String!) {
         text
         title
       }
-      image {
+      galleryImage {
         title
         image {
           id

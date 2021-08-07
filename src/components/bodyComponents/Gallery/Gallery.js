@@ -39,14 +39,14 @@ const Gallery = ({ component, location }) => {
 
   const navigateLeft = () => {
     if (activeImage !== null) {
-      const newPos = activeImage <= 0 ? component.image.length - 1 : activeImage - 1;
+      const newPos = activeImage <= 0 ? component.galleryImage.length - 1 : activeImage - 1;
       setFocus(newPos);
     }
   };
 
   const navigateRight = () => {
     if (activeImage !== null) {
-      const newPos = activeImage >= component.image.length - 1 ? 0 : activeImage + 1;
+      const newPos = activeImage >= component.galleryImage.length - 1 ? 0 : activeImage + 1;
       setFocus(newPos);
     }
   };
@@ -63,7 +63,7 @@ const Gallery = ({ component, location }) => {
 
   return (
     <div className={styles.container}>
-      {component.image.map((image, i) => (
+      {component.galleryImage.map((image, i) => (
         <div key={image.image.id}>
           <div
             className={styles.imageWrapper}
@@ -91,10 +91,10 @@ const Gallery = ({ component, location }) => {
             <div className={styles.imageFocus}>
               <div onClick={() => navigateRight()}>
                 <GatsbyImage
-                  image={component.image[activeImage].image.localFile.childImageSharp.gatsbyImageData} />
-                {component.image[activeImage].title && (
+                  image={component.galleryImage[activeImage].image.localFile.childImageSharp.gatsbyImageData} />
+                {component.galleryImage[activeImage].title && (
                   <h3 className={styles.imageTitleFocus}>
-                    {component.image[activeImage].title}
+                    {component.galleryImage[activeImage].title}
                   </h3>
                 )}
               </div>
