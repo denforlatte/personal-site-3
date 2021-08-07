@@ -1,5 +1,16 @@
 @import '../../style/variables';
 
+.article {
+  h2, h3 {
+    font-weight: 400;
+  }
+
+  a {
+    color: $colour-secondary; 
+    font-weight: 700;
+  }
+}
+
 .outerContainer {
   display: flex;
   justify-content: center;
@@ -39,7 +50,7 @@
 }
 
 .title {
-  font-size: 24px;
+  font-size: 30px;
   margin-top: 6px;
   margin-bottom: 20px;
 }
