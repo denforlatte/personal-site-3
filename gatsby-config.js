@@ -16,7 +16,7 @@ module.exports = {
     description: `A website for me to share whatever projects I've been working on.`,
     siteUrl: `https://dannywilkins.me`,
     social: {
-      twitter: `denforlatte`,
+      twitter: `denforlatte`, // TODO expand
     },
   },
   plugins: [
@@ -64,8 +64,16 @@ module.exports = {
         name: `images`,
       },
     },
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          placeholder: `tracedSVG`,
+          backgroundColor: `transparent`,
+        }
+      }
+    },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     //`gatsby-plugin-feed`, for an RSS feed. May need to re-add markdown remark
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
