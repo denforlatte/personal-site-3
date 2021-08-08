@@ -1,8 +1,10 @@
 require("dotenv").config();
 
 // We want to get the unpublished blogs if we're in dev mode
-const query = process.env.NODE_ENV === "development" ? {} : ({
-  _sort: 'published_date:desc',
+const query = process.env.NODE_ENV === "development" ? {
+  _sort: 'published_date:asc',
+} : ({
+  _sort: 'published_date:asc',
   is_published: 'true',
 })
 
