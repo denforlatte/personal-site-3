@@ -20,7 +20,7 @@ blog.propTypes = {
 };
 
 export const blogPostsQuery = graphql`{
-  allStrapiBlogPost(sort: {fields: published_date, order: ASC}) {
+  allStrapiBlogPost(sort: {fields: published_date, order: DESC}) {
     nodes {
       published_date
       slug

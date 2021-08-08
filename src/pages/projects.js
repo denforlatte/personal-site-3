@@ -20,7 +20,7 @@ projects.propTypes = {
 };
 
 export const projectsQuery = graphql`{
-  allStrapiProject(sort: {fields: published_date, order: ASC}) {
+  allStrapiProject(sort: {fields: published_date, order: DESC}) {
     nodes {
       published_date
       slug
