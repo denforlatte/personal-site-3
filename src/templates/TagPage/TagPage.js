@@ -52,7 +52,7 @@ export const query = graphql`query PostsByTag($slug: String!) {
         alternativeText
         localFile {
           childImageSharp {
-            gatsbyImageData(width: 600, layout: FULL_WIDTH, aspectRatio: 1.33)
+            gatsbyImageData
           }
         }
       }
@@ -75,7 +75,7 @@ export const query = graphql`query PostsByTag($slug: String!) {
         alternativeText
         localFile {
           childImageSharp {
-            gatsbyImageData(width: 600, layout: FULL_WIDTH, aspectRatio: 1.33)
+            gatsbyImageData
           }
         }
       }
