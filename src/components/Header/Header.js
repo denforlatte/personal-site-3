@@ -50,7 +50,11 @@ const Header = ({ location, tags, toggleTag }) => {
           <SocialLinks />
         </div>
       </div>
-      <nav className={styles.navbar}>{generateNavLinks()}</nav>
+      <nav>
+        <ul className={styles.navbar}>
+          {generateNavLinks()}
+        </ul>
+      </nav>
       <MobileNav
         toggleMenuOpen={toggleMenuOpen}
         toggleFilterOpen={toggleFilterOpen}
