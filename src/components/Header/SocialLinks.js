@@ -5,7 +5,7 @@ const SocialLinks = () => {
   return (
     <ul className={styles.socialContainer}>
       <li className={styles.socialTag}>
-        <a href="https://twitter.com/denforlatte" aria-label="My Twitter">
+        <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/denforlatte" aria-label="My Twitter">
           <img
             aria-hidden="true"
             title="My Twitter"
@@ -25,7 +25,7 @@ const SocialLinks = () => {
         </a>
       </li>
       <li className={styles.socialTag}>
-        <a href="https://www.linkedin.com/in/danny-wilkins" aria-label="My Linkedin">
+        <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/danny-wilkins" aria-label="My Linkedin">
           <img
             aria-hidden="true"
             title="My Linkedin"
@@ -35,7 +35,7 @@ const SocialLinks = () => {
         </a>
       </li>
       <li className={styles.socialTag}>
-        <a href="https://github.com/denforlatte" aria-label="My Github">
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/denforlatte" aria-label="My Github">
           <img
             aria-hidden="true"
             title="My Github"
@@ -45,7 +45,7 @@ const SocialLinks = () => {
         </a>
       </li>
       <li className={styles.socialTag}>
-        <a href="https://www.facebook.com/danny.t.wilkins" aria-label="My Facebook">
+        <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/danny.t.wilkins" aria-label="My Facebook">
           <img
             aria-hidden="true"
             title="My Facebook"

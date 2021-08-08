@@ -9,7 +9,7 @@ const richTextToProse = (richText) => {
     .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>')
     .replace(/\*(.*)\*/gim, '<i>$1</i>')
     .replace(/!\[(.*?)\]\((.*?)\)/gim, "<img alt='$1' src='$2' />")
-    .replace(/\[(.*?)\]\((.*?)\)/gim, "<a target=\"_blank\" href='$2'>$1</a>");
+    .replace(/\[(.*?)\]\((.*?)\)/gim, "<a target=\"_blank\" rel=\"noopener noreferrer\" href='$2'>$1</a>");
 
   const paragraphs = text.split('\n');
   const pTags = paragraphs.map((p, i) => {
