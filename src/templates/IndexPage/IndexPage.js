@@ -59,6 +59,7 @@ const IndexPage = ({ location, nodes }) => {
       <DesktopIndexFilter tags={tags} toggleTag={handleToggleTag} />
       <main style={{ marginBottom: "50px" }}>
         {generateIndexCards()}
+        <br/>
       </main>
     </>
   );
