@@ -101,3 +101,9 @@
     font-size: 1.4rem;
   }
 }
+
+@media screen and (max-width: $breakpoint) {
+  .imageCard {
+    margin-bottom: 20px;
+  }
+}

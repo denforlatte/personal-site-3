@@ -64,7 +64,7 @@ const Gallery = ({ component, location }) => {
   return (
     <div className={styles.container}>
       {component.galleryImage.map((galleryImage, i) => (
-        <div key={galleryImage.image.id}>
+        <div key={galleryImage.image.id} className={styles.imageCard}>
           <div
             className={styles.imageWrapper}
             onClick={() => setFocus(i)}
