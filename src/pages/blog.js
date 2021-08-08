@@ -34,7 +34,7 @@ export const blogPostsQuery = graphql`{
         alternativeText
         localFile {
           childImageSharp {
-            gatsbyImageData(width: 600, layout: FULL_WIDTH, aspectRatio: 1.33)
+            gatsbyImageData
           }
         }
       }
